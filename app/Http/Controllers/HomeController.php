@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 
 class HomeController extends Controller
@@ -24,9 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role=='admin')
-            return view('admin.admin');
+        if (Auth::user()->role == 'admin')
+        {
+            return view('layouts.app-home');
+        }
         else
+        {
             return view('auth.login');
+        }
     }
 }
