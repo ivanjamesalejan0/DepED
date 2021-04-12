@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateReportTable extends Migration
 {
@@ -13,12 +13,13 @@ class CreateReportTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table)
+        {
             $table->increments('id');
-            $table->string('name',100);
+            $table->string('name', 100);
             $table->integer('teacher_id')->unsigned();
-            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('status',100);
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->string('status', 100);
             $table->longText('data');
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateReportTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report');
+        Schema::dropIfExists('reports');
     }
 }

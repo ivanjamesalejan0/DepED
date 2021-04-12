@@ -9,20 +9,35 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+    'middleware' => 'auth',
+], function ($router)
+{
+    Route::get('/', 'HomeController@index');
+    Route::get('home', 'HomeController@index');
+
+    Route::group([
+        'prefix' => 'views',
+    ], function ($router)
+    {
+        Route::group([
+            'prefix' => 'admin',
+        ], function ($router)
+        {
+            Route::get('home', 'AdminHomeController@home');
+        });
+    });
 });
 
-Route::get('/sample', function () {
-    return view('layouts.armed complict.step1');
-});
-Route::get('/add', function () {
-    return view('add');
-});
-Route::get('/view', function () {
-    return view('layouts.table');
+Route::group([
+    'middleware' => 'guest',
+], function ($router)
+{
+    Route::get('/', function ()
+    {
+        return view('welcome');
+    });
 });
