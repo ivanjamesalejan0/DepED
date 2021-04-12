@@ -3,10 +3,6 @@
  * -----------------*/
 
 var arrMainNav = [
-	{
-		url: "#admin",
-		title: "Admin",
-		children: [
 			{
 				url: "admin/home",
 				title: "Home",
@@ -18,16 +14,25 @@ var arrMainNav = [
 				description: "Manage reports lists, approval, new report creation, etc"
 			},
 			{
+				url: "admin/reports/create?type=small-scale",
+				title: "Add Report",
+				description: "Create new Small Scale disaster report"
+			},
+			{
+				url: "admin/reports/create?type=large-scale",
+				title: "Add Report",
+				description: "Create new Large Scale disaster report"
+			},
+			{
+				url: "admin/reports/create?type=armed-conflict",
+				title: "Add Report",
+				description: "Create new Armed Conflict disaster report"
+			},
+			{
 				url: "admin/statistics",
 				title: "Statistics",
 				description: "View statistics for reports, includes graphs, geo-fencing, etc"
 			},
-		]
-	},
-	{
-		url: "#users",
-		title: "Users",
-		children: [
 			{
 				url: "admin/users",
 				title: "Manage Users",
@@ -38,6 +43,9 @@ var arrMainNav = [
 				title: "Add User",
 				description: "Create new user credential for admin, teacher, or student"
 			},
-		]
-	},
+			{
+				url: "admin/settings",
+				title: "Settings",
+				description: "Configure administrative settings"
+			},
 ];

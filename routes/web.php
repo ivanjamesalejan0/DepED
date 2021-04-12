@@ -28,6 +28,7 @@ Route::group([
         ], function ($router)
         {
             Route::get('home', 'AdminHomeController@home');
+            Route::resource('reports', 'ReportController');
         });
     });
 });

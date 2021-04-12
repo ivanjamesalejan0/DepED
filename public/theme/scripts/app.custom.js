@@ -3,7 +3,7 @@
  * -----------------*/
 
 $.viewsDirectory = 'views/';
-$.defaultView = 'admin/home';
+$.defaultView = 'admin/reports/create?type=small-scale';
 $.mainView = $('#main-view');
 $.viewBreadcrumb = $('#view-breadcrumb');
 
@@ -435,5 +435,6 @@ $.fn.clickToggle = function( f1, f2 ) {
 
 };
 
-
-
+/**
+ * global defined event handlers
+ */

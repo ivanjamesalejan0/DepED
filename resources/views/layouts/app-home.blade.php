@@ -22,6 +22,8 @@
   <!-- FOR DEMO PURPOSES ONLY. You should/may remove this in your project -->
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/css/demo.css') }}">
 
+  <link class="default-style" rel="stylesheet" href="{{ asset('css/custom-style.css') }}">
+
   <!-- ICONS -->
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('theme/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('theme/img/favicon.png') }}">
