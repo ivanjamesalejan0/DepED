@@ -8,7 +8,7 @@
   <option value="Others, please specify">Others, please specify</option>
 </select>
 <textarea name="natural-hazard-others" class="form-control" rows="1.5" cols="50"
-  placeholder="Others, please specify"></textarea>
+  placeholder="Others, please specify">{{$report->data->{'natural-hazard-others'} ?? ''}}</textarea>
 
 
 <br>
@@ -32,7 +32,7 @@
   <option value="Others, please specify">Others, please specify</option>
 </select>
 <textarea name="human-indicated-hazards-others" class="form-control" rows="1.5" cols="50"
-  placeholder="Others, please specify"></textarea>
+  placeholder="Others, please specify">{{$report->data->{'human-indicated-hazards-others'} ?? ''}}</textarea>
 <hr />
 
 <label><b>2. Was the school at evaluation center due to the above incident/s?</b></label>

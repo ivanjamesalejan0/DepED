@@ -14,4 +14,9 @@ class Report extends Model
     protected $fillable = [
         'name', 'teacher_id', 'status', 'data',
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo('\App\Models\Teacher', 'teacher_id');
+    }
 }

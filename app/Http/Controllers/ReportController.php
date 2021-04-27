@@ -14,7 +14,7 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        $result = Report::get()->toArray() ?? [];
+        $result = Report::get();
 
         return view('admin.views.reports.list', ['reports' => $result]);
     }
@@ -29,7 +29,11 @@ class ReportController extends Controller
         switch (strtolower($request->get('type') ?? 'small-scale'))
         {
         case 'small-scale':
-            return view('admin.views.reports.small-scale.create');
+            return view('admin.views.reports.small-scale.form');
+        case 'large-scale':
+            return view('admin.views.reports.large-scale.form');
+        case 'armed-conflict':
+            return view('admin.views.reports.armed-conflict.form');
         }
     }
 
@@ -52,7 +56,7 @@ class ReportController extends Controller
 
         $new_report = Report::create([
             'name' => 'Sample report',
-            'teacher_id' => 1,
+            'teacher_id' => 1, //temporary id
             'status' => 'pending',
             'data' => json_encode($data),
         ]);
@@ -69,7 +73,7 @@ class ReportController extends Controller
         switch (strtolower($request->get('type') ?? 'small-scale'))
         {
         case 'small-scale':
-            return view('admin.views.reports.small-scale.create', ['data' => $return_data]);
+            return view('admin.views.reports.small-scale.form', ['data' => $return_data]);
         }
     }
 
@@ -92,7 +96,16 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        //
+        $report->data = json_decode($report->data);
+        switch ($report->data->{'report-type'} ?? 'small-scale')
+    {
+        case 'small-scale':
+            return view('admin.views.reports.small-scale.form', ['report' => $report]);
+        case 'large-scale':
+            return view('admin.views.reports.large-scale.form', ['report' => $report]);
+        case 'armed-conflict':
+            return view('admin.views.reports.armed-conflict.form', ['report' => $report]);
+        }
     }
 
     /**
@@ -104,7 +117,23 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+        $data = [];
+        foreach (collect($request->all())->keys()->toArray() as $r)
+        {
+            if ($r != '_token' && $r != '_method')
+            {
+                $data[$r] = $request->get($r);
+            }
+        }
+
+        $report->fill([
+            'name' => 'Sample report',
+            'teacher_id' => 1, //temporary id
+            'status' => 'pending',
+            'data' => json_encode($data),
+        ]);
+        $report->save();
+        return ['success' => true, 'message' => 'Successfully saved'];
     }
 
     /**
@@ -115,6 +144,24 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        $report->delete();
+        return response()->json(['success' => true, 'message' => 'request submitted successfully']);
+    }
+
+    /**
+     * Remove multiple resources from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMultiple(Request $request)
+    {
+        $ids = $request->get('id') ?? '';
+        $ids = explode(',', $ids);
+        if (count($ids))
+        {
+            Report::destroy($ids);
+        }
+        return response()->json(['success' => true, 'message' => 'request submitted successfully']);
     }
 }
