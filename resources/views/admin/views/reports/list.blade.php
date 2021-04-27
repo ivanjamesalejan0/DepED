@@ -1,5 +1,6 @@
 <script>
 var requiredCSS = [
+  "{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}",
   "{{ asset('datatables/css/dataTables.bootstrap.min.css') }}",
   "{{ asset('datatables/ColReorder-1.4.1/css/colReorder.bootstrap.min.css') }}",
   "{{ asset('datatables/Select-1.2.3/css/select.bootstrap.min.css') }}",
@@ -12,6 +13,7 @@ var requiredCSS = [
 loadCSS(requiredCSS);
 
 var requiredJS = [
+  "{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}",
   "{{ asset('datatables/js/jquery.dataTables.min.js') }}",
   "{{ asset('datatables/js/dataTables.bootstrap.min.js') }}",
   "{{ asset('datatables/ColReorder-1.4.1/js/dataTables.colReorder.min.js') }}",
@@ -55,11 +57,11 @@ loadJS(requiredJS);
       </thead>
       <tbody>
         @foreach($reports as $r)
-        <tr>
-          <td>{{$r['name']}}</td>
-          <td>{{$r['teacher_id']}}</td>
-          <td>{{$r['status']}}</td>
-          <td>{{ date('Y-m-d H:i:s', strtotime($r['created_at'])) }}</td>
+        <tr data-id="{{$r->id}}">
+          <td>{{$r->name}}</td>
+          <td>{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</td>
+          <td>{{$r->status}}</td>
+          <td>{{ date('Y-m-d H:i:s', strtotime($r->created_at)) }}</td>
         </tr>
         @endforeach
       </tbody>

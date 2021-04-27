@@ -140,6 +140,7 @@ function getMenuObj(arrMenu, url) {
 }
 
 function loadView(viewUrl) {
+  $('.swal2-shown').removeClass('swal2-shown');
 	$.ajax({
 		type: 'GET',
 		url: $.viewsDirectory + viewUrl,
@@ -179,6 +180,29 @@ function loadView(viewUrl) {
 		error: function() {
 		}
 	});
+}
+
+function updateView(data){
+  $.mainView.html(data);
+
+  // if main content is shorter than sidebar
+  if ($('.main').innerHeight() < $('#sidebar-nav').innerHeight()) {
+    $('.main').css('min-height', $('#sidebar-nav').innerHeight());
+    $navbarHeight = $('.navbar').innerHeight();
+    $('.main-content').css('height', 'calc(100vh - ' + $navbarHeight + 'px)');
+    $('footer').css('position', 'absolute');
+  } else {
+    $('.main').css('min-height', '');
+    $('.main-content').css('height', '');
+    $('footer').css('position', '');
+  }
+
+  // make full height for layout top navigation
+  if ($('body').hasClass('layout-topnav')) {
+
+    $footerHeight = $('footer').innerHeight();
+    $('.main').css('min-height', 'calc(100vh - ' + $footerHeight + 'px)');
+  }
 }
 
 
