@@ -132,10 +132,84 @@ $(function () {
         {
           text: 'Edit',
           className: 'edit-row fa fa-edit',
+          action: function (e, dt, node, config) {
+            var id;
+            $.each($('#reports-list-datatable tbody tr.selected'), function (index, val) {
+              id = $(val).attr('data-id');
+            });
+            loadView(`admin/reports/${id}/edit`);
+          }
         },
         {
           text: 'Delete',
-          className: 'delete-row fa fa-trash'
+          className: 'delete-row fa fa-trash',
+          action: function (e, dt, node, config) {
+            swal({
+              title: 'Confirm Delete?',
+              text: "Are you sure you want to delete selected reports? You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#F9354C',
+              cancelButtonColor: '#41B314',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function() {
+              var selected = [];
+              $.each($('#reports-list-datatable tbody tr.selected'), function (index, val) {
+                selected.push($(val).attr('data-id'));
+              });
+              swal({
+                title: 'Processing',
+                text: 'Please wait...',
+                allowOutsideClick: false,
+                type: null,
+                closeOnConfirm: false,
+                closeOnCancel: false,
+                showConfirmButton: false,
+                onOpen: () => {
+                  swal.showLoading()
+                  $("#submit-form").addClass('disabled');
+                  $.ajax({
+                    url: 'views/admin/reports/multiple?id='+selected.join(','),
+                    type: 'DELETE',
+                    processData: false,
+                    cache: false,
+                    contentType: false,
+                    beforeSend: function(xhr) {
+                      xhr.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+                    }
+                  }).success(function(data) {
+                    if(data.success){
+                      swal({
+                        title: 'Deleted!',
+                        text: 'Report(s) has been deleted',
+                        type: 'success',
+                        allowOutsideClick: false,
+                      }).then(function() {
+                        loadView('admin/reports');
+                      }).catch(swal.noop);
+                    }else{
+                      swal({
+                        title: 'Oops! Something went wrong',
+                        text: data.message || 'Please try again',
+                        type: 'error',
+                        allowOutsideClick: false,
+                      }).then(function() {
+                      }).catch(swal.noop);
+                    }
+                  }).error(function(data) {
+                    swal({
+                      title: 'Oops! Something went wrong',
+                      text: 'Please try again',
+                      type: 'error',
+                      allowOutsideClick: false,
+                    }).then(function() {
+                    }).catch(swal.noop);
+                  });
+                }
+              },
+              function() {});
+            }).catch(swal.noop);
+          }
         }
       ]
     }

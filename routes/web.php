@@ -28,6 +28,7 @@ Route::group([
         ], function ($router)
         {
             Route::get('home', 'AdminHomeController@home');
+            Route::delete('reports/multiple', 'ReportController@destroyMultiple');
             Route::resource('reports', 'ReportController');
             Route::resource('users', 'UserController');
         });
