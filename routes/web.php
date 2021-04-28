@@ -29,6 +29,7 @@ Route::group([
         {
             Route::get('home', 'AdminHomeController@home');
             Route::resource('reports', 'ReportController');
+            Route::resource('users', 'UserController');
         });
     });
 });
