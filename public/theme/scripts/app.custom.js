@@ -3,7 +3,7 @@
  * -----------------*/
 
 $.viewsDirectory = 'views/';
-$.defaultView = 'admin/reports/create?type=small-scale';
+$.defaultView = 'admin/home';
 $.mainView = $('#main-view');
 $.viewBreadcrumb = $('#view-breadcrumb');
 

@@ -9,6 +9,10 @@ var requiredJS = [
   "{{ asset('theme/scripts/admin/reports/reports-form.js') }}"
 ];
 loadJS(requiredJS);
+
+
+
+
 </script>
 
 <div class="panel">

@@ -2,12 +2,12 @@
 <p> A. Natural Hazards</p>
 <select name="natural-hazards" class="form-control">
   <option value="Fire caused by another natural hazards, eg. lighting">Fire caused by another natural hazards, eg.
-    lighting</option>
+    lighting , eg.lighting Flood </option>
   <option value="Fallen trees caused by another natural hazards, eg. strong winds">Fallen trees caused by another
     natural hazards, eg. strong winds</option>
   <option value="Others, please specify">Others, please specify</option>
 </select>
-<textarea name="natural-hazard-others" class="form-control" rows="1.5" cols="50"
+<textarea id="natural-hazard-specific-others" name="natural-hazard-specific-others" class="form-control natural-hazard-specific hidden" rows="1.5" cols="50"
   placeholder="Others, please specify">{{$report->data->{'natural-hazard-others'} ?? ''}}</textarea>
 
 
@@ -41,8 +41,8 @@
   <option value="Yes">Yes</option>
 </select></h5><br><br>
 <label>If school was used as evaluation center, how many rooms were occupied?</label><br>
-<input type="number" name="rooms-occupied" class="form-control" value="">
+<input type="number" name="rooms-occupied" class="form-control" value="" required>>
 
 <label>If school was as evacuation center, how many households were accommodated?</label><br>
-<input type="number" name="households-accommodated" class="form-control" value="">
+<input type="number" name="households-accommodated" class="form-control" value="" required>>
 <br>

@@ -1,5 +1,5 @@
 <label><b>3. Was a suspention of class declared by Barangay or LGU in responce to the</b></label>
-<input type="radio" name="indicated-hazard" value="">
+<input type="radio" name="hazards" value="">
 <label for="">Yes</label>
 <input type="radio" name="hazards" value="#">
 <label for="crime-heads">No</label></h5><br><br>

@@ -68,3 +68,13 @@ $('#app-form').on('submit', function (e) {
     },
     function() {});
 });
+
+
+$("select[name='natural-hazards']").change(function(e){
+  $('.natural-hazard-specific').addClass('hidden');
+  switch(e.target.value){
+        case 'Others, please specify':
+          $('#natural-hazard-specific-others').removeClass('hidden');
+          break;
+  }
+})

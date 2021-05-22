@@ -74,6 +74,10 @@ class ReportController extends Controller
         {
         case 'small-scale':
             return view('admin.views.reports.small-scale.form', ['data' => $return_data]);
+            break;
+
+        case 'large-scale':
+             return view('admin.views.reports.large-scale.form', ['data' => $return_data]);
         }
     }
 
