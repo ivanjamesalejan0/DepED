@@ -105,6 +105,7 @@ class ReportController extends Controller
     {
         case 'small-scale':
             return view('admin.views.reports.small-scale.form', ['report' => $report]);
+            break;
         case 'large-scale':
             return view('admin.views.reports.large-scale.form', ['report' => $report]);
         case 'armed-conflict':

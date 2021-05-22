@@ -41,8 +41,8 @@
   <option value="Yes">Yes</option>
 </select></h5><br><br>
 <label>If school was used as evaluation center, how many rooms were occupied?</label><br>
-<input type="number" name="rooms-occupied" class="form-control" value="" required>>
+<input type="number" name="rooms-occupied" class="form-control" value="" >
 
 <label>If school was as evacuation center, how many households were accommodated?</label><br>
-<input type="number" name="households-accommodated" class="form-control" value="" required>>
+<input type="number" name="households-accommodated" class="form-control" value="">
 <br>
