@@ -1,3 +1,5 @@
+'use strict';
+
 $(function () {
 
   // datatable with paging options and live search

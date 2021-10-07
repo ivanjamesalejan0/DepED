@@ -291,3 +291,7 @@ img.nav-menu-logo {
   border-color: #00a0f0;
   color: #fff;
 }
+.brand img{
+  width: "50px";
+  height:"auto";
+}

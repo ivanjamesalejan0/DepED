@@ -1,6 +1,12 @@
+<style>
+.brand{
+  position: absolute;
+  transform: translate(-10%, -30%)       
+}
+</style>
 <div class="brand">
-  <a href="index.html"><img src="{{ asset('theme/img/#') }}" alt="DEPED"
-      class="img-responsive logo"></a>
+  <a href="index.html"><img src="{{ asset('theme/img/deped logo.png') }}" alt="DEPED" 
+   class="img-responsive logo"></a>
 </div>
 <div class="container-fluid">
   <div id="tour-fullwidth" class="navbar-btn">

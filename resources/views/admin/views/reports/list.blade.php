@@ -1,6 +1,5 @@
 <script>
 var requiredCSS = [
-  "{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}",
   "{{ asset('datatables/css/dataTables.bootstrap.min.css') }}",
   "{{ asset('datatables/ColReorder-1.4.1/css/colReorder.bootstrap.min.css') }}",
   "{{ asset('datatables/Select-1.2.3/css/select.bootstrap.min.css') }}",
@@ -13,7 +12,6 @@ var requiredCSS = [
 loadCSS(requiredCSS);
 
 var requiredJS = [
-  "{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}",
   "{{ asset('datatables/js/jquery.dataTables.min.js') }}",
   "{{ asset('datatables/js/dataTables.bootstrap.min.js') }}",
   "{{ asset('datatables/ColReorder-1.4.1/js/dataTables.colReorder.min.js') }}",
@@ -35,10 +33,8 @@ var requiredJS = [
   "{{ asset('datatables/dataTables.colResize.js') }}",
   "{{ asset('theme/scripts/admin/reports/reports-list-table.js') }}"
 ];
-
 loadJS(requiredJS);
 </script>
-
 <!-- FEATURED DATATABLE -->
 <div class="panel">
   <div class="panel-heading">
@@ -57,6 +53,7 @@ loadJS(requiredJS);
       </thead>
       <tbody>
         @foreach($reports as $r)
+
         <tr data-id="{{$r->id}}">
           <td>{{$r->name}}</td>
           <td>{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</td>

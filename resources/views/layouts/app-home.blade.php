@@ -19,6 +19,9 @@
     type="text/css">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/css/skins/navbar3.css') }}" type="text/css">
 
+  
+  <link href="{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}" rel="stylesheet" class="default-style" >
+
   <!-- FOR DEMO PURPOSES ONLY. You should/may remove this in your project -->
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/css/demo.css') }}">
 
@@ -89,6 +92,7 @@
 
   <script class="default-js" src="{{ asset('theme/scripts/main-menu.custom.js') }}"></script>
   <script class="default-js" src="{{ asset('theme/scripts/app.custom.js') }}"></script>
+  <script class="default-js" src="{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}"></script>
 
 </body>
 

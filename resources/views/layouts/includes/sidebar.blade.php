@@ -12,21 +12,21 @@
 
     <li class="menu-group">Reports</li>
     <div class="submenu ">
-      <li class="panel">
-        <a href="admin/statistics"> <span class="title">Statistics</span></a>
-      </li>
-      <li class="panel">
-        <a href="admin/reports"><span class="title">Manage Reports</span></a>
-      </li>
-      <li class="panel">
-        <a href="admin/reports/create?type=small-scale"> <span class="title">Add Small Scale Report</span></a>
-      </li>
-      <li class="panel">
-        <a href="admin/reports/create?type=large-scale"> <span class="title">Add Large Scale Report</span></a>
-      </li>
-      <li class="panel">
-        <a href="admin/reports/create?type=armed-conflict"> <span class="title">Add Armed Conflict Report</span></a>
-      </li>
+        <li>
+          <a href="admin/statistics"> <span class="title">Statistics</span></a>
+        </li>
+        <li>
+          <a href="admin/reports"><span class="title">Manage Reports</span></a>
+        </li>
+        <li>
+          <a href="admin/reports/create?type=small-scale"> <span class="title">Add Small Scale Report</span></a>
+        </li>
+        <li>
+          <a href="admin/reports/create?type=large-scale"> <span class="title">Add Large Scale Report</span></a>
+        </li>
+        <li>
+          <a href="admin/reports/create?type=armed-conflict"> <span class="title">Add Armed Conflict Report</span></a>
+        </li>
     </div>
 
     <li class="menu-group">Users</li>

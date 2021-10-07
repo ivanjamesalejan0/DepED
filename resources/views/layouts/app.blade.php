@@ -20,6 +20,7 @@
   <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
   <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+  <link href="{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}" rel="stylesheet">
 
   <!--external css-->
   <!-- Custom styles for this template -->
@@ -97,6 +98,9 @@
   <script src="{{ asset('lib/jquery.nicescroll.js') }}"></script>
   <!--common script for all pages-->
   <script src="{{ asset('lib/common-scripts.js') }}"></script>
+  
+  <script src="{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}"></script>
+  <script src="{{ asset('theme/scripts/admin/reports/reports-form.js') }}"></script>
 </body>
 
 </html>

@@ -17,12 +17,12 @@ function loadJS(requiredJS) {
 	$('script').not('.default-js').each(function() {
 		$(this).remove();
 	});
-
 	for(var i = 0; i<requiredJS.length;i++){
 		var body = document.getElementsByTagName('body')[0];
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.async = false;
+		//script.defer = true;
 		script.src = requiredJS[i];
 		body.appendChild(script);
 	}

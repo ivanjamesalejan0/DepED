@@ -14,7 +14,6 @@ loadJS(requiredJS);
 
 
 </script>
-
 <div class="panel">
   <div class="panel-heading">
     <h3 class="panel-title">Add Report</h3>
@@ -43,6 +42,7 @@ loadJS(requiredJS);
           <input id="report-id" name="id" type="hidden" value="{{$report->id}}" />
           <input type="hidden" name="_method" value="PUT">
           @endif
+          <input type="hidden" name="report-type" value="small-scale">
           <div class="tab-content">
             <div class="tab-pane fade in active" id="page1">
               <h5>Page 1</h5>

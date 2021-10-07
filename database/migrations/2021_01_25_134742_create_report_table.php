@@ -21,6 +21,9 @@ class CreateReportTable extends Migration
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->string('status', 100);
             $table->longText('data');
+            $table->string('province', 100);
+            $table->string('municipality', 100);
+            $table->string('barangay', 100);
             $table->timestamps();
         });
     }

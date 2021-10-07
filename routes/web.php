@@ -44,3 +44,8 @@ Route::group([
         return view('welcome');
     });
 });
+
+Route::get('/view', function ()
+{
+    return view('pdf');
+});

@@ -12,10 +12,13 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
+        
+        
         $result = Report::get();
-
+        
         return view('admin.views.reports.list', ['reports' => $result]);
     }
 
@@ -59,6 +62,9 @@ class ReportController extends Controller
             'teacher_id' => 1, //temporary id
             'status' => 'pending',
             'data' => json_encode($data),
+            'province' => $request->input('province'),
+            'municipality' => $request->input('municipality'),
+            'barangay' =>$request->input('barangay'),
         ]);
 
         if ($new_report->id)
