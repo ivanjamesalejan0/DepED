@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class ReportController extends Controller
 {
@@ -98,9 +99,31 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show(Report $report, Request $request)
     {
-        //
+        $report->data = json_decode($report->data);
+        view()->share('report', $report);
+
+        switch (strtolower($request->get('type') ?? 'small-scale'))
+        {
+        case 'small-scale':
+            $blade = 'admin.views.reports.small-scale.';
+            break;
+        case 'large-scale':
+            $blade = 'admin.views.reports.large-scale.';
+            break;
+        case 'armed-conflict':
+            $blade = 'admin.views.reports.armed-conflict.';
+            break;
+        }
+
+        if ($request->has('download'))
+        {
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->loadView($blade . 'pdf-view', $report);
+            return $pdf->download($report->name . '-report.pdf');
+        }
+        return view($blade . 'view');
     }
 
     /**
