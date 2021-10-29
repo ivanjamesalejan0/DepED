@@ -98,7 +98,7 @@
   <script src="{{ asset('lib/jquery.nicescroll.js') }}"></script>
   <!--common script for all pages-->
   <script src="{{ asset('lib/common-scripts.js') }}"></script>
-  
+
   <script src="{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}"></script>
   <script src="{{ asset('theme/scripts/admin/reports/reports-form.js') }}"></script>
 </body>

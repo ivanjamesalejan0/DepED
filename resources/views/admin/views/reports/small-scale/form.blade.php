@@ -1,18 +1,12 @@
 <script>
-var requiredCSS = [
-  "{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}"
-];
+var requiredCSS = [];
 loadCSS(requiredCSS);
 
 var requiredJS = [
-  "{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}",
-  "{{ asset('theme/scripts/admin/reports/reports-form.js') }}"
+  "{{ asset('theme/scripts/admin/reports/location-selector.js') }}",
+  "{{ asset('theme/scripts/admin/reports/reports-form.js') }}",
 ];
 loadJS(requiredJS);
-
-
-
-
 </script>
 <div class="panel">
   <div class="panel-heading">
@@ -35,14 +29,20 @@ loadJS(requiredJS);
           <li class="active"><a href="#page1" role="tab" data-toggle="tab">Page 1</a></li>
           <li><a href="#page2" role="tab" data-toggle="tab">Page 2</a></li>
         </ul>
-        <form method="POST" id="app-form" action="views/admin/reports/{{$report->id ?? ''}}" autocomplete="off"
-          enctype="multipart/form-data">
+        <form method="POST" id="app-form" action="views/admin/reports/{{$report->id ?? ''}}" autocomplete="off" enctype="multipart/form-data">
           {{ csrf_field() }}
           @if(isset($report->id))
           <input id="report-id" name="id" type="hidden" value="{{$report->id}}" />
           <input type="hidden" name="_method" value="PUT">
           @endif
           <input type="hidden" name="report-type" value="small-scale">
+          <div class="form-group">
+            <label>Report Name</label>
+            <input type="text" name="report_name" value="{{$report->name ?? ''}}" placeholder="Name for your report" class="form-control">
+          </div>
+          <div class="form-group">
+            @include('admin.views.reports.helpers.location-select', ['report' => $report ?? []])
+          </div>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="page1">
               <h5>Page 1</h5>
@@ -52,8 +52,7 @@ loadJS(requiredJS);
 
               <div class="form-group row">
                 <div class="col-xs-6">
-                  <a href="#page2" role="tab" data-toggle="tab" class="btn btn-primary">Next <span
-                      class="ti-arrow-circle-right"></span></a>
+                  <a href="#page2" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
@@ -64,13 +63,11 @@ loadJS(requiredJS);
 
               <div class="form-group row">
                 <div class="col-xs-6">
-                  <a href="#page1" role="tab" data-toggle="tab" class="btn btn-default"><span
-                      class="ti-arrow-circle-left"></span> Previous</a>
+                  <a href="#page1" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
                 <div class="col-xs-6 text-right">
                   <button class="btn btn-default" id="cancel-report-creation">Cancel</button>
-                  <button type="submit" id="submit-form" class="btn btn-success">Submit <span
-                      class="fa fa-check"></span></button>
+                  <button type="submit" id="submit-form" class="btn btn-success">Submit <span class="fa fa-check"></span></button>
                 </div>
               </div>
 

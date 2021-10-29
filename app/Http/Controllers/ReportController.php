@@ -12,14 +12,19 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index(Request $request)
     {
-        
-        
-        $result = Report::get();
-        
-        return view('admin.views.reports.list', ['reports' => $result]);
+
+        $result = Report::all();
+        $reports = [];
+        foreach ($result as $i => $r)
+        {
+            $reports[$i] = $r;
+            $reports[$i]->data = json_decode($r->data);
+        }
+
+        return view('admin.views.reports.list', ['reports' => $reports]);
     }
 
     /**
@@ -58,13 +63,13 @@ class ReportController extends Controller
         }
 
         $new_report = Report::create([
-            'name' => 'Sample report',
+            'name' => $request->input('report_name'),
             'teacher_id' => 1, //temporary id
             'status' => 'pending',
             'data' => json_encode($data),
-            'province' => $request->input('province'),
-            'municipality' => $request->input('municipality'),
-            'barangay' =>$request->input('barangay'),
+            'province' => $request->input('report_province'),
+            'municipality' => $request->input('report_municipality'),
+            'barangay' => $request->input('report_barangay'),
         ]);
 
         if ($new_report->id)
@@ -83,7 +88,7 @@ class ReportController extends Controller
             break;
 
         case 'large-scale':
-             return view('admin.views.reports.large-scale.form', ['data' => $return_data]);
+            return view('admin.views.reports.large-scale.form', ['data' => $return_data]);
         }
     }
 

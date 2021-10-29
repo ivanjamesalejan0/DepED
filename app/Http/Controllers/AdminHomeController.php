@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class AdminHomeController extends Controller
 {
     /**
@@ -16,6 +18,8 @@ class AdminHomeController extends Controller
 
     public function home()
     {
-        return view('admin.views.home');
+        $result = DB::table('reports')->selectRaw("province, municipality, barangay")->whereRaw("DATE(created_at) >= DATE(NOW()) - INTERVAL 30 DAY")->groupBy(['province', 'municipality', 'barangay'])->get();
+
+        return view('admin.views.home', ['geo' => $result]);
     }
 }

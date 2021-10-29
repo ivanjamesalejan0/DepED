@@ -29,34 +29,35 @@
 </select>
 
 <p>d. If the use of the school as EC has extended beyond 15 days, has the LGU done the
-following:</p><br>
+  following:</p><br>
 
 <label>
-Identified alternative evacuation centers, transitional relocation sities, and/or permanent
-relation sites for final site selection.</label><br>
+  Identified alternative evacuation centers, transitional relocation sities, and/or permanent
+  relation sites for final site selection.</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
 </select>
 
 <label><b>Implemented measures to prevent interference or disruption to the final school
-and educational activities of children.</b></label>
+    and educational activities of children.</b></label>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
 </select>
 
 <label>Provided timeline for the relocation of and plans of action for internally displaced
-persons to sites outside of schools.</label><br>
+  persons to sites outside of schools.</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
 </select>
 
 <label>Facilated general cleaning, fumigation, payment of utilities, and repair of schools
-and child development centers used as ECs.</label><br>
+  and child development centers used as ECs.</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
 </select>
 <br>
+<hr>
