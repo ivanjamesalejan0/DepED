@@ -1,4 +1,4 @@
-$('#cancel-report-creation').on('click', function(e) {
+$('#cancel-report-creation').on('click', function (e) {
   e.preventDefault();
   swal({
     title: 'Confirm Cancel',
@@ -9,9 +9,9 @@ $('#cancel-report-creation').on('click', function(e) {
     confirmButtonColor: '#F9354C',
     cancelButtonColor: '#41B314',
     confirmButtonText: "Yes, don't save!"
-  }).then(function() {
+  }).then(function () {
     loadView('admin/reports');
-  }, function(dismiss) {
+  }, function (dismiss) {
     //do nothing
   });
 });
@@ -37,44 +37,46 @@ $('#app-form').on('submit', function (e) {
           processData: false,
           cache: false,
           contentType: false,
-          beforeSend: function(xhr) {
+          beforeSend: function (xhr) {
             if ($(this).find('.has-error .error').length > 0) {
               xhr.abort();
             }
             xhr.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
           }
-        }).success(function(data) {
+        }).success(function (data) {
           swal({
             title: 'Success!',
             text: 'Report saved successfully',
             type: 'success',
             allowOutsideClick: false,
-          }).then(function() {
+          }).then(function () {
             loadView('admin/reports/create');
           }).catch(swal.noop);
-        }).error(function(data) {
+        }).error(function (data) {
           swal({
             title: 'Oops! Something went wrong',
             text: 'Please try again',
             type: 'error',
             allowOutsideClick: false,
-          }).then(function() {
+          }).then(function () {
             loadView('admin/reports/create');
           }).catch(swal.noop);
-        }).complete(function(data) {
+        }).complete(function (data) {
           $('#submit-form').removeClass('disabled');
         });
       }
     },
-    function() {});
+    function () {});
 });
 
 
-$("select[name='natural-hazards']").change(function(e){
+$("select[name='natural-hazards']").change(function (e) {
   $('.natural-hazard-specific').addClass('hidden');
-  switch(e.target.value){
-        case 'Others, please specify':
-          $('#natural-hazard-specific-others').removeClass('hidden');
-          break;
+  switch (e.target.value) {
+    case 'Others, please specify':
+      $('#natural-hazard-specific-others').removeClass('hidden');
+      break;
   }
 })
+
+

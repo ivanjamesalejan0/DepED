@@ -26,10 +26,11 @@
 <input type="input" name=" Grade 6_male" class="form-control" placeholder="male" value=""><br>
 
 <label>EXTERNAL PARTNERS
-(e.g. NGOs, CSOs)</label><br>
+  (e.g. NGOs, CSOs)</label><br>
 <input type="input" name=" Grade 6_male" class="form-control" placeholder="male" value=""><br>
 
 <label>V. OTHER CONCERNS AND RECOMMENDATIONS. Kindly specify other issues needing urgent
-attention, including next steps. Use separate sheet if needed.</label><br>
+  attention, including next steps. Use separate sheet if needed.</label><br>
 <textarea type="input" name="NARRATIVE" class="form-control" value=""></textarea><br>
 <br>
+<hr>

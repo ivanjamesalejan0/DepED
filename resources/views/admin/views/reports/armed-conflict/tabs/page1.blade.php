@@ -11,4 +11,4 @@
 <h5><b>PROVINCE</b></h5>
 <input type="number" name="PROVINCE" class="form-control" placeholder="PROVINCE" value="">
 <br>
-<hr/>
+<hr />

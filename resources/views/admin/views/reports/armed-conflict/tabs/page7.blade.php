@@ -1,18 +1,18 @@
 <label>4. GRAVE CHILD RIGHT & VIOLATION (GCRVs) AND OTHER
-RELATED VIOLATIONS.</label><br>
+  RELATED VIOLATIONS.</label><br>
 
 <p>Kindly indicate if the the following may have been committed, and
-attach a full report.</p><br>
+  attach a full report.</p><br>
 
 <p>For each GCRV that may have
-been committed, provide as much
-details as possible(who, what, when, where, how),
-and supporting documents(e.g. pictures, statement, statement, other related
-reports) in a separate sheet.</p><br>
+  been committed, provide as much
+  details as possible(who, what, when, where, how),
+  and supporting documents(e.g. pictures, statement, statement, other related
+  reports) in a separate sheet.</p><br>
 
 <label>List of GCRV's</label><br>
 
-<label>	Hamleting</label><br>
+<label>Hamleting</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
@@ -31,7 +31,7 @@ reports) in a separate sheet.</p><br>
 </select>
 
 <label>Rape and Grave Sexual Violence of
-Children</label><br>
+  Children</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
@@ -50,7 +50,7 @@ Children</label><br>
 </select>
 
 <label>Arrest arbitary detendion, or unlawful prosecution of children allegedly associated
-with armed groups or government forces.</label><br>
+  with armed groups or government forces.</label><br>
 <select name="Incurred" class="form-control">
   <option value="No" {{ ($report->data->{'Incurred'}?? null) == 'No' ? 'selected' : '' }}>No</option>
   <option value="Yes" {{ ($report->data->{'Incurred'} ?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>

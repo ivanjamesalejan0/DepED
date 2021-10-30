@@ -14,7 +14,7 @@
 <input type="number" name="totally-damaged" class="form-control" value="{{$report->data->{'totally-damaged'} ?? ''}}">
 
 <label>Number of academic classrooms with major damage(damage academic classrooms needing major repair and cannot be repaired by school)</label><br>
-<input type="number" name= "major-damage" class="form-control" value="{{$report->data->{'major-damage'} ?? ''}}">
+<input type="number" name="major-damage" class="form-control" value="{{$report->data->{'major-damage'} ?? ''}}">
 
 <label>Number of academic classrooms with minor damage (damaged academic classrooms needinf repair that can all be repaired by school)</label><br>
 <input type="number" name="minor-damage" class="form-control" value="{{$report->data->{'minor-damage'} ?? ''}}">
@@ -33,7 +33,7 @@
 
 <label><b>Are there still evacuees after three days?</b></label>
 <select name="evacuees" class="form-control">
-  <option value="No" {{ ($report->data->{'evacuees'}?? null) == 'No' ? 'selected' : '' }} >No</option>
-  <option value="Yes" {{ ($report->data->{'evacuees'}?? null) == 'Yes' ? 'selected' : '' }} >Yes</option>
+  <option value="No" {{ ($report->data->{'evacuees'}?? null) == 'No' ? 'selected' : '' }}>No</option>
+  <option value="Yes" {{ ($report->data->{'evacuees'}?? null) == 'Yes' ? 'selected' : '' }}>Yes</option>
 </select>
 <br>
