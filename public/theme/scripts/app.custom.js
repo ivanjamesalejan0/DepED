@@ -70,7 +70,7 @@ if (window.location.href.indexOf("index-topnav.html") > -1) {
   loadView($.defaultView);
 }
 
-$('#sidebar-nav-menu .submenu a, #sidebar-nav-menu > li > a').on('click', function (e) {
+$('body').on('click', '#sidebar-nav-menu .submenu a, #sidebar-nav-menu > li > a, .view-link', function (e) {
   e.preventDefault();
 
   setTitleDescription($(this).attr('href'));

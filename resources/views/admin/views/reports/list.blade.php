@@ -30,7 +30,7 @@ loadJS(requiredJS);
 
         <tr data-id="{{$r->id}}">
           <td>{{$r->data->{'report-type'} ?? ''}}</td>
-          <td>{{$r->name}}</td>
+          <td><a href="admin/reports/{{$r->id}}?type={{$r->data->{'report-type'} ?? ''}}" class="view-link">{{$r->name}}</a></td>
           <td>{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</td>
           <td>{{$r->status}}</td>
           <td>{{ date('Y-m-d H:i:s', strtotime($r->created_at)) }}</td>
