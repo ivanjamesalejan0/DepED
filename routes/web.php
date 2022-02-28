@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +15,7 @@ Route::group([
     'middleware' => 'auth',
 ], function ($router)
 {
-    Route::get('/', 'HomeController@index');
+    Route::get('statistic', 'HomeController@index');
     Route::get('home', 'HomeController@index');
 
     Route::group([
@@ -27,11 +26,13 @@ Route::group([
             'prefix' => 'admin',
         ], function ($router)
         {
+            Route::get('statistics', 'ChartController@index');
             Route::get('home', 'AdminHomeController@home');
             Route::delete('reports/multiple', 'ReportController@destroyMultiple');
             Route::resource('reports', 'ReportController');
             Route::resource('users', 'UserController');
             Route::get('pdfview',array('as'=>'pdfview','uses'=>'BestInterviewQuestionController@pdfview'));
+            Route::post('users/upload-image', 'UserController@uploadImage');
         });
     });
 });

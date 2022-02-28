@@ -1,3 +1,7 @@
+<?php
+$school_list = DB::table('tbl_schools')->get();
+?>
+
 <script>
 requiredCSS = [
   'assets/vendor/sweetalert2/sweetalert2.css',
@@ -12,20 +16,21 @@ requiredJS = [
   'theme/scripts/admin/users/users-form.js',
 ];
 
-
 loadJS(requiredJS);
+var returnURL = 'admin/home';
 </script>
 
 <div class="row">
   <form id="app-form" class="form-horizontal" role="form" method="POST"
-    action="views/admin/users"
+    action="views/admin/users{{isset($info)?'/'.$user->id:''}}"
     autocomplete="off" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="">
     <input type="hidden" name="_token" value="">
     <input type="hidden" name="image" value="">
 
-    @if(isset($member))
-    <input type="hidden" name="id" value="">
+    @if(isset($info))
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="id" value="{{$user->id}}">
+    <input type="hidden" name="info_id" value="{{$info->id}}">
     @endif
 
     <div class="col-md-12">
@@ -42,34 +47,45 @@ loadJS(requiredJS);
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">First Name</label>
-                      <input type="text" name="firstname" class="form-control" value="">
+                      <input type="text" name="firstname" class="form-control" value="{{$info->firstname ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Middle Name</label>
-                      <input type="text" name="middlename" class="form-control" value="">
+                      <input type="text" name="middlename" class="form-control" value="{{$info->middlename ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Last Name</label>
-                      <input type="text" name="lastname" class="form-control" value="">
+                      <input type="text" name="lastname" class="form-control" value="{{$info->lastname ?? ''}}">
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-md-4 col-lg-4">
+                    <div class="form-group form-control-container">
+                      <label class="control-label">Gender</label>
+                      <select name="gender" class="form-control">
+                        <option value="male" {{isset($info) && $info->gender=='male'? 'selected': ''}} >
+                        male</option>
+                        <option value="female"{{isset($info) && $info->gender=='female'? 'selected': ''}} >
+                        female</option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Civil Status</label>
-                      <select name="civil_status" class="form-control">
-                        <option value="single" >
+                      <select name="status" class="form-control">
+                        <option value="single" {{isset($info) && $info->status=='single'? 'selected': ''}}>
                           Single</option>
-                        <option value="married" >
+                        <option value="married"{{isset($info) && $info->status=='married'? 'selected': ''}} >
                           Married</option>
-                        <option value="widowed" >
+                        <option value="widowed" {{isset($info) && $info->status=='widowed'? 'selected': ''}}>
                           Widowed</option>
-                        <option value="widower">
+                        <option value="widower"  {{isset($info) && $info->status=='widower'? 'selected': ''}}>
                           Widower</option>
                       </select>
                     </div>
@@ -78,18 +94,22 @@ loadJS(requiredJS);
                     <div class="form-group form-control-container">
                       <label class="control-label">Role</label>
                       <select name="role" class="form-control">
-                        <option value="principal" >
+                        <option value="principal" {{isset($user) && $user->role=='principal'? 'selected': ''}}>
                         Principal</option>
-                        <option value="teacher_user" >
-                        Teacher_user</option>
+                        <option value="teacher"{{isset($user) && $user->role=='teacher'? 'selected': ''}} >
+                        Teacher</option>
+                        <option value="admin" {{isset($user) && $user->role=='admin'? 'selected': ''}}>
+                       Admin</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
-                      <label class="control-label">school</label>
+                      <label class="control-label">School</label>
                       <select name="school" class="form-control">
-                        
+                      @foreach($school_list as $s)
+                        <option value="{{$s->id}}">{{$s->school_name}}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -97,13 +117,13 @@ loadJS(requiredJS);
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Name</label>
-                      <input type="text" name="name" class="form-control" value="">
+                      <input type="text" name="name" class="form-control" value="{{$user->name ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Email</label>
-                      <input type="text" name="email" class="form-control" value="">
+                      <input type="text" name="email" class="form-control" value="{{$user->email ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
@@ -114,22 +134,7 @@ loadJS(requiredJS);
                   </div>
                 </div>
               </div>         
-                <div class="col-md-4">
-                  <div class="panel">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Picture</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div id="results">
-                        @if(isset($member) && $member->image)
-                        <img id="imageprev" src="images" />
-                        @endif
-                      </div>
-                      <br />
-                      <a class="btn btn-primary" data-toggle="modal" href='#camera-modal'>Take Picture</a>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
     <div class="col-md-8 text-right">

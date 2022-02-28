@@ -11,7 +11,7 @@ class Teacher extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','firstname','middlename','lastname','role','status'];
+    protected $fillable = ['user_id','firstname','middlename','lastname','role','status','gender','school'];
     public function reports()
     {
         return $this->hasOne('\App\Models\Report', 'id');

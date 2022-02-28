@@ -3,13 +3,15 @@
 /* BASIC THEME CONFIGURATION */
 body {
     color: #797979;
-	background: #eaeaea;
+	background-color: white;
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
     font-size:13px;
 }
-
+h2{
+color: black;
+}   
 ul li {
     list-style: none;
 }

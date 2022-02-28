@@ -1,14 +1,10 @@
 <h5><b>SCHOOL NAME</b></h5>
-<input type="number" name="SCHOOL NAME" class="form-control" placeholder="SCHOOL NAME" value="">
+<input type="text" name="School_name" class="form-control" placeholder="SCHOOL NAME" value="{{$report->data->{'School_name'} ?? ''}}">
 <h5><b>SCHOOL ID</b></h5>
-<input type="number" name="SCHOOL ID" class="form-control" placeholder="SCHOOL ID" value="">
+<input type="number" name="School_id" class="form-control" placeholder="SCHOOL ID" value="{{$report->data->{'School_id'} ?? ''}}">
 <h5><b>DIVISION</b></h5>
-<input type="number" name="DIVISION" class="form-control" placeholder="DIVISION" value="">
+<input type="number" name="Division" class="form-control" placeholder="DIVISION" value="{{$report->data->{'Division'} ?? ''}}">
 <h5><b>DISTRICT</b></h5>
-<input type="number" name="DISTRICT" class="form-control" placeholder="DISTRICT" value="">
-<h5><b>MUNICIPALITY/CITY</b></h5>
-<input type="number" name="MUNICIPALITY/CITY" class="form-control" placeholder="MUNICIPALITY/CITY" value="">
-<h5><b>PROVINCE</b></h5>
-<input type="number" name="PROVINCE" class="form-control" placeholder="PROVINCE" value="">
+<input type="number" name="District" class="form-control" placeholder="DISTRICT" value="{{$report->data->{'District'} ?? ''}}">
 <br>
 <hr />

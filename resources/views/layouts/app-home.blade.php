@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
+  <link rel="icon" type="image/png" href="{{  asset('theme/img/249751651_599905524484536_8579641574835364272_n.png') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/bootstrap/css/bootstrap.min.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/font-awesome/css/font-awesome.min.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/themify-icons/css/themify-icons.css') }}">

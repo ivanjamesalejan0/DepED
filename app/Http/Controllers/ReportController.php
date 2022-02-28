@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use App\Modules\SMS;
 
 class ReportController extends Controller
 {
@@ -16,7 +19,7 @@ class ReportController extends Controller
 
     public function index(Request $request)
     {
-
+        if (Auth::user()->role == 'admin'){
         $result = Report::all();
         $reports = [];
         foreach ($result as $i => $r)
@@ -27,7 +30,19 @@ class ReportController extends Controller
 
         return view('admin.views.reports.list', ['reports' => $reports]);
     }
-
+    else if (Auth::user()->role == 'teacher'){
+        $teacher = Teacher::where('user_id',Auth::user()->id)->first();
+              $result = Report::where('teacher_id',$teacher->id)->get();
+              $reports = [];
+              foreach ($result as $i => $r)
+              {
+                  $reports[$i] = $r;
+                  $reports[$i]->data = json_decode($r->data);
+              }
+      
+              return view('admin.views.reports.list', ['reports' => $reports]);
+          }
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -62,10 +77,11 @@ class ReportController extends Controller
                 $data[$r] = $request->get($r);
             }
         }
+        $user_teacher_data = Teacher::Where('user_id' , Auth::user()->id)->first();
 
         $new_report = Report::create([
             'name' => $request->input('report_name'),
-            'teacher_id' => 1, //temporary id
+            'teacher_id' => $user_teacher_data->id,
             'status' => 'pending',
             'data' => json_encode($data),
             'province' => $request->input('report_province'),
@@ -75,6 +91,9 @@ class ReportController extends Controller
 
         if ($new_report->id)
         {
+            $sms = new SMS;
+            $message = "New report has been received from. Name: ".$user_teacher_data->id;
+            $sms->sendSMS($message);
             $return_data = ['success' => true, 'message' => 'Report saved successfully!'];
         }
         else
@@ -164,10 +183,10 @@ class ReportController extends Controller
                 $data[$r] = $request->get($r);
             }
         }
-
+        $user_teacher_data = Teacher::Where('user_id' , Auth::user()->id)->first();
         $report->fill([
-            'name' => 'Sample report',
-            'teacher_id' => 1, //temporary id
+            'name' =>$request->input('report_name'),
+            'teacher_id' => $user_teacher_data->id, 
             'status' => 'pending',
             'data' => json_encode($data),
         ]);

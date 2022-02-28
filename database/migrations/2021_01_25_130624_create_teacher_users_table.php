@@ -24,6 +24,8 @@ class CreateTeacherUsersTable extends Migration
             $table->string('image', 250)->nullable();
             $table->string('role', 100);
             $table->string('status', 100);
+            $table->string('gender', 100);
+            $table->string('school', 250);
             $table->timestamps();
             $table->softDeletes();
         });

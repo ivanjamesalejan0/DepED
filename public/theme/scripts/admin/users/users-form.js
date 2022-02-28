@@ -29,11 +29,11 @@ $('#app-form').on('submit', function (e) {
           }).success(function(data) {
             swal({
               title: 'Success!',
-              text: 'Report saved successfully',
+              text: 'User saved successfully',
               type: 'success',
               allowOutsideClick: false,
             }).then(function() {
-              loadView('admin/reports/create');
+              loadView('admin/home');
             }).catch(swal.noop);
           }).error(function(data) {
             swal({

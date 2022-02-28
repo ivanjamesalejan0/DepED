@@ -21,11 +21,10 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('theme/img/user.png') }}"
             alt="Avatar">
-          <span>Samuel</span></a>
+          <span>{{ Auth::user()->name }}</span></a>
         <ul class="dropdown-menu logged-user-menu">
-          <li><a href="#"><i class="ti-user"></i> <span>My Profile</span></a></li>
-          <li><a href="#"><i class="ti-email"></i> <span>Message</span></a></li>
-          <li><a href="#"><i class="ti-settings"></i> <span>Settings</span></a></li>
+          <li><a href="#" onClick="loadView('admin/users/{{Auth::user()->id}}/edit')"><i class="ti-user"></i> <span>My Profile</span></a></li>
+
           <li>
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
