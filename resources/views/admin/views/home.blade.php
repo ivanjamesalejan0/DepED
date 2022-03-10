@@ -10,7 +10,7 @@ loadCSS(requiredCSS);
 var requiredJS = [
   "https://requirejs.org/docs/release/2.3.5/minified/require.js",
   "{{ asset('assets/scripts/google-map.js') }}",
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDizQIy6SjLi48bvB4HcHq18Ur7u2FSbRo&callback=initMap&libraries=&v=weekly",
+  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDR-WtdpF1Qm8SBkDSmTpN9nkewpvCOfVk&callback=initMap&libraries=&v=weekly",
 ]
 loadJS(requiredJS);
 </script>

@@ -6,32 +6,32 @@ var arrMainNav = [
   {
     url: "admin/home",
     title: "Home",
-    description: "DepEd Disaster Report Management System"
+    description: "Disaster Report Management System"
   },
   {
     url: "admin/reports",
-    title: "Reports",
-    description: "Manage reports lists, approval, new report creation, etc"
+    title: "",
+    description: ""
   },
   {
     url: "admin/reports/create?type=small-scale",
-    title: "Add Report",
-    description: "Create new Small Scale disaster report"
+    title: "Small-Scale",
+    description: "Natural Hazard"
   },
   {
     url: "admin/reports/create?type=large-scale",
-    title: "Add Report",
-    description: "Create new Large Scale disaster report"
+    title: "large-scale",
+    description: "Natural Catastrophe"
   },
   {
     url: "admin/reports/create?type=armed-conflict",
-    title: "Add Report",
-    description: "Create new Armed Conflict disaster report"
+    title: "armed-conflict",
+    description: "Conflict against the humality"
   },
   {
     url: "admin/statistics",
     title: "Statistics",
-    description: "View statistics for reports, includes graphs, geo-fencing, etc"
+    description: "View statistics for reports, includes graphs etc"
   },
   {
     url: "admin/users",
@@ -47,5 +47,10 @@ var arrMainNav = [
     url: "admin/settings",
     title: "Settings",
     description: "Configure administrative settings"
+  },
+  {
+    url: "admin/reports?report-list1",
+    title: "",
+    description: ""
   },
 ];

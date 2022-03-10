@@ -46,7 +46,7 @@ $('#app-form').on('submit', function (e) {
         }).success(function (data) {
           swal({
             title: 'Success!',
-            text: 'Report saved successfully',
+            text: 'Report has been Submitted Successfully',
             type: 'success',
             allowOutsideClick: false,
           }).then(function () {
@@ -55,11 +55,11 @@ $('#app-form').on('submit', function (e) {
         }).error(function (data) {
           swal({
             title: 'Oops! Something went wrong',
-            text: 'Please try again',
+            text: 'Please Double check your form',
             type: 'error',
             allowOutsideClick: false,
           }).then(function () {
-            loadView('admin/reports/create');
+            
           }).catch(swal.noop);
         }).complete(function (data) {
           $('#submit-form').removeClass('disabled');

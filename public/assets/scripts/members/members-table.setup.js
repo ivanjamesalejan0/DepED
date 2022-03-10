@@ -112,13 +112,13 @@ function deleteMember(id) {
 }
 function approveMember(id) {
   swal({
-    title: 'Approve Member',
-    text: 'Are you sure you want to Approve this member?',
+    title: 'Activate Member',
+    text: 'Are you sure you want to Activate this member?',
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#41B314',
     cancelButtonColor: '#F9354C',
-    confirmButtonText: 'Approve',
+    confirmButtonText: 'Activate',
     allowOutsideClick: false
   }).then(function () {
     $.ajax({

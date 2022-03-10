@@ -47,19 +47,19 @@ var returnURL = 'admin/home';
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">First Name</label>
-                      <input type="text" name="firstname" class="form-control" value="{{$info->firstname ?? ''}}">
+                      <input type="text" name="firstname" class="form-control" required value="{{$info->firstname ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Middle Name</label>
-                      <input type="text" name="middlename" class="form-control" value="{{$info->middlename ?? ''}}">
+                      <input type="text" name="middlename" class="form-control" required value="{{$info->middlename ?? ''}}">
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Last Name</label>
-                      <input type="text" name="lastname" class="form-control" value="{{$info->lastname ?? ''}}">
+                      <input type="text" name="lastname" class="form-control" required value="{{$info->lastname ?? ''}}">
                     </div>
                   </div>
                 </div>
@@ -93,13 +93,13 @@ var returnURL = 'admin/home';
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Role</label>
+                        
                       <select name="role" class="form-control">
                         <option value="principal" {{isset($user) && $user->role=='principal'? 'selected': ''}}>
                         Principal</option>
                         <option value="teacher"{{isset($user) && $user->role=='teacher'? 'selected': ''}} >
                         Teacher</option>
-                        <option value="admin" {{isset($user) && $user->role=='admin'? 'selected': ''}}>
-                       Admin</option>
+                        
                       </select>
                     </div>
                   </div>
@@ -123,13 +123,13 @@ var returnURL = 'admin/home';
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">Email</label>
-                      <input type="text" name="email" class="form-control" value="{{$user->email ?? ''}}">
+                      <input type="text" name="email" class="form-control" required >
                     </div>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <div class="form-group form-control-container">
                       <label class="control-label">password</label>
-                      <input type="password" name="password" class="form-control" value="">
+                      <input type="password" name="password" required class="form-control" value="">
                     </div>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ var returnURL = 'admin/home';
               </div>
             </div>
     <div class="col-md-8 text-right">
-      <button type="submit" id="submit-form" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit-form" class="btn btn-primary">Sign Up</button>
     </div>
 
     <div class="modal fade" id="camera-modal">

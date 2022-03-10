@@ -48,7 +48,7 @@ var returnURL = 'admin/home';
           <td>{{$teacher->school_name}}</td>
           <td>
             @if(!$teacher->active)
-              <a href="#" class="btn btn-success" onClick="approveMember({{$teacher->user_id}})" title="Active">active</a>
+              <a href="#" class="btn btn-success" onClick="approveMember({{$teacher->user_id}})" title="Active">activate</a>
             @else  
               <a href="#" class="btn btn-danger" onClick="deactivateMember({{$teacher->user_id}})" title="Archive">deactivate</a>
             @endif  

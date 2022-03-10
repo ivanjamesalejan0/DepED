@@ -6,6 +6,8 @@ var requiredJS = [
   "{{ asset('theme/scripts/admin/reports/reports-form.js') }}"
 ];
 loadJS(requiredJS);
+var returnURL = 'admin/reports/create';
+
 </script>
 
 <div class="panel">

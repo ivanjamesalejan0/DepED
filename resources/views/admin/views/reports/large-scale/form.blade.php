@@ -32,10 +32,10 @@ loadJS(requiredJS);
         <form method="POST" id="app-form" action="views/admin/reports/{{$report->id ?? ''}}" autocomplete="off" enctype="multipart/form-data">
           {{ csrf_field() }}
           @if(isset($report->id))
-          <input id="report-id" name="id" type="hidden" value="{{$report->id}}" />
-          <input type="hidden" name="_method" value="PUT">
+          <input id="report-id" name="id" type="hidden" required value="{{$report->id}}" />
+          <input type="hidden" name="_method" required value="PUT">
           @endif
-          <input type="hidden" name="report-type" value="large-scale">
+          <input type="hidden" name="report-type" required value="large-scale">
 
           <div class="form-group">
             <label>Report Name</label>

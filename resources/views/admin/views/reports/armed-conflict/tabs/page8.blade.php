@@ -5,15 +5,15 @@
 <p>1. CLASS SUSPENSION (FOR EACH SCHOOL)</p><br>
 
 <label>a. When were classes suspended?</label><br>
-<input type="date" name="classes suspended" class="form-control"  value="{{$report->data->{'classes_suspended'} ?? ''}}"><br>
+<input type="date" name="classes suspended" class="form-control" required  value="{{$report->data->{'classes_suspended'} ?? ''}}"><br>
 
 <label>b. When did classes resume?</label><br>
-<input type="date" name=" classes resume" class="form-control" value="{{$report->data->{'classes_resume'} ?? ''}}"><br>
+<input type="date" name=" classes resume" class="form-control" required value="{{$report->data->{'classes_resume'} ?? ''}}"><br>
 
 <p>2. SCHOOL USED A EVACUATION CENTER(FOR EACH SCHOOL)</p><br>
 
 <label>a. How long has the school been used as evacuation center?</label><br>
-<input type="number" name="USED A EVACUATION" class="form-control" " value="{{$report->data->{'USED_A_EVACUATION'} ?? ''}}"><br>
+<input type="number" name="USED A EVACUATION" class="form-control" required value="{{$report->data->{'USED_A_EVACUATION'} ?? ''}}"><br>
 
 
 <label>b. How many families and individuals are housed within the school vicinity?</label><br>

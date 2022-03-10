@@ -87,12 +87,13 @@ class ReportController extends Controller
             'province' => $request->input('report_province'),
             'municipality' => $request->input('report_municipality'),
             'barangay' => $request->input('report_barangay'),
+            'image' => $request->input('report_image'),
         ]);
 
         if ($new_report->id)
         {
             $sms = new SMS;
-            $message = "New report has been received from. Name: ".$user_teacher_data->id;
+            $message = "New report has been received from ".$request->input('report_barangay');
             $sms->sendSMS($message);
             $return_data = ['success' => true, 'message' => 'Report saved successfully!'];
         }
@@ -142,6 +143,9 @@ class ReportController extends Controller
             $pdf->loadView($blade . 'pdf-view', $report);
             return $pdf->download($report->name . '-report.pdf');
         }
+        $sms = new SMS;
+            $message = "Your report has been received";
+            $sms->sendSMS1($message);
         return view($blade . 'view');
     }
 
@@ -222,4 +226,5 @@ class ReportController extends Controller
         }
         return response()->json(['success' => true, 'message' => 'request submitted successfully']);
     }
+    
 }

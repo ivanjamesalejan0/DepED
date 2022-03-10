@@ -33,7 +33,7 @@ $('#app-form').on('submit', function (e) {
               type: 'success',
               allowOutsideClick: false,
             }).then(function() {
-              loadView('admin/home');
+              loadView('admin/users/create');
             }).catch(swal.noop);
           }).error(function(data) {
             swal({
@@ -42,7 +42,7 @@ $('#app-form').on('submit', function (e) {
               type: 'error',
               allowOutsideClick: false,
             }).then(function() {
-              loadView('admin/reports/create');
+              loadView('admin/users/create');
             }).catch(swal.noop);
           }).complete(function(data) {
             $('#submit-form').removeClass('disabled');

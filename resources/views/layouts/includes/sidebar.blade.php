@@ -3,10 +3,10 @@
   @if ($user->role == 'admin')
     <li class="menu-group">Main</li>
     <li><a href="admin/home"><span class="title">Home</span></a></li>
-    <li><a href="admin/users"><span class="title">Manage Users</span></a></li>
-    <li><a href="admin/statistics"><span class="title">statistics</span></a></li>
-    <li><a href="admin/users/create"><span class="title">Add User</span></a></li>
     <li><a href="admin/reports"><span class="title">Manage Reports</span></a></li>
+    <li><a href="admin/users/create"><span class="title">Add User</span></a></li>
+    <li><a href="admin/users"><span class="title">Manage Users</span></a></li>
+    <li><a href="admin/statistics"><span class="title">Statistic</span></a></li>
   @elseif ($user->role == 'teacher')
     <li class="menu-group">Components</li>
     <li><a href="admin/home"><span class="title">Home</span></a></li>

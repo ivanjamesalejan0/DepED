@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-5" style="position:relative; top:-60px;">
       <div class="panel panel-default">
         <div class="panel-heading">Register</div>
 
@@ -61,14 +61,13 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
               </div>
             </div>
-
-            <div class="col-md-4 col-lg-4">
-                    <div class="form-group form-control-container">
-                      <label class="control-label">Role</label>
-                      <select name="role" class="form-control">
+            <div class="col-md-7  col-lg-5">
+                    <div class="form-group">
+                      <label class="control-label"style="position:relative; top:35px;" >Role</label>
+                       <select name="role" class="form-control" style="float: left ; margin-left: 250px;">
                         <option value="principal" >
                         Principal</option>
-                        <option value="" >
+                        <option value=" Teacher_user" >
                         Teacher_user</option>
                       </select>
                     </div>
@@ -78,6 +77,7 @@
                 <button type="submit" class="btn btn-primary">
                   Register
                 </button>
+                <i class="bi bi-link"> <a href="{{ route('login') }}">Login</a></i>
               </div>
             </div>
           </form>

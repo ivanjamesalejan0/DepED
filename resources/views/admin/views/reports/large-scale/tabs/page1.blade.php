@@ -1,4 +1,5 @@
 <h5><b>1. Name of Incident (Can be a name of tropical cyclone, name of volcano or description of incident)</b></h5>
+<p>
 <input type="input" name="Incident" class="form-control" value="{{$report->data->{'Incident'} ?? ''}}">
 <br>
 <p><b>EBEIS SCHOOL ID</p></b>

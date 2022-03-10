@@ -10,6 +10,7 @@ $.dataTable = $('#reports-list-datatable').dataTable({
     [15, 30, 50, -1],
     [15, 30, 50, "All"]
   ],
+  
   'dom': '<<"row" <"col-sm-3 text-left dt-search"><"col-sm-9 text-right" B>><t><"row" <"col-sm-6 text-left" l><"col-sm-6 text-right" pi>>>',
   'serverSide': false,
   'processing': false,
@@ -97,35 +98,7 @@ $.dataTable = $('#reports-list-datatable').dataTable({
         extend: 'colvis',
         postfixButtons: ['colvisRestore']
       },
-      {
-        extend: 'collection',
-        text: 'Add Report',
-        className: 'fa fa-plus',
-        buttons: [{
-            text: 'Small Scale',
-            className: 'fa',
-            action: function (e, dt, node, config) {
-              loadView('admin/reports/create?type=small-scale');
-            }
-          },
-          {
-            text: 'Large Scale',
-            className: 'fa',
-            action: function (e, dt, node, config) {
-              loadView('admin/reports/create?type=large-scale');
-            }
-          },
-          {
-            text: 'Armed Conflict',
-            className: 'fa',
-            action: function (e, dt, node, config) {
-              loadView('admin/reports/create?type=armed-conflict');
-            }
-          },
-        ],
-        fade: false,
-        autoclose: true
-      },
+     
       {
         text: 'Edit',
         className: 'edit-row fa fa-edit',

@@ -1,11 +1,13 @@
 <style>
 .brand{
   position: absolute;
-  transform: translate(-10%, -30%)       
+  transform: translate(-10%, -30%);
+  width:220px;
+  height: auto;    
 }
 </style>
 <div class="brand">
-  <a href="index.html"><img src="{{ asset('theme/img/deped logo.png') }}" alt="DEPED" 
+  <a href="index.html"><img src="{{ asset('theme/img/rsz_ok.png') }}" alt="DEPED" 
    class="img-responsive logo"></a>
 </div>
 <div class="container-fluid">

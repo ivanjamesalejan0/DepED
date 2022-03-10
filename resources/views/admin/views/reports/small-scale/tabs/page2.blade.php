@@ -12,7 +12,7 @@
 <label><b>If the incident happened during an off-campus activity, what was the name of
     the activity conducted by the school</label><br></b>
 
-<label>5. When did the incident happen? (Give the data and time)</label><br>
+<label>5. When did the incident happen? (Give the date and time)</label><br>
 <input type="input" name="incident" class="form-control" value="{{$report->data->{'incident'} ?? ''}}">
 
 <label>6. Give a brief description or a short narrative of the incident.(You may yse additional sheet)</label><br>

@@ -26,7 +26,7 @@ function initMap() {
     //console.log(polygon);
     const vertices = polygon.getPath();
     let contentString =
-      "<b>Name</b><br>" +
+      "<b>Location</b><br>" +
       polygon.name +
       "<br>";
     // Replace the info window's content and position.
@@ -57,7 +57,6 @@ function initMap() {
             lat: raw_coordinates[c][1],
           })
         }
-
         // Construct the polygon.
         const geoMap = new google.maps.Polygon({
           paths: parsed_coordinates,
@@ -70,7 +69,7 @@ function initMap() {
         });
 
         geoMap.setMap(map);
-        geoMap.addListener("click", showArrays);
+        geoMap.addListener("mouseover", showArrays);
           }
         }
       }
