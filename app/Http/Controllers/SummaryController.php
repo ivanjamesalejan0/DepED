@@ -127,7 +127,7 @@ class ReportController extends Controller
         switch (strtolower($request->get('type') ?? 'small-scale'))
         {
         case 'small-scale':
-            $blade = 'admin.views.reports.small-scale.';
+            $blade = 'Reports.summary';
             break;
         case 'large-scale':
             $blade = 'admin.views.reports.large-scale.';

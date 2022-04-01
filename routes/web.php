@@ -17,6 +17,8 @@ Route::group([
 {
     Route::get('statistic', 'HomeController@index');
     Route::get('home', 'HomeController@index');
+    Route::get('summary', 'SummaryController@index');
+
 
     Route::group([
         'prefix' => 'views',
@@ -26,6 +28,7 @@ Route::group([
             'prefix' => 'admin',
         ], function ($router)
         {
+            Route::get('summary', 'SummaryController@index');
             Route::get('statistics', 'ChartController@index');
             Route::get('home', 'AdminHomeController@home');
             Route::delete('reports/multiple', 'ReportController@destroyMultiple');
