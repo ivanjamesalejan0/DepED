@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use App\Models\Teacher;
+use App\Modules\SMS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use App\Modules\SMS;
 
 class ReportController extends Controller
 {
@@ -19,30 +19,32 @@ class ReportController extends Controller
 
     public function index(Request $request)
     {
-        if (Auth::user()->role == 'admin'){
-        $result = Report::all();
-        $reports = [];
-        foreach ($result as $i => $r)
+        if (Auth::user()->role == 'admin')
         {
-            $reports[$i] = $r;
-            $reports[$i]->data = json_decode($r->data);
-        }
+            $result = Report::all();
+            $reports = [];
+            foreach ($result as $i => $r)
+            {
+                $reports[$i] = $r;
+                $reports[$i]->data = json_decode($r->data);
+            }
 
-        return view('admin.views.reports.list', ['reports' => $reports]);
+            return view('admin.views.reports.list', ['reports' => $reports]);
+        }
+        else if (Auth::user()->role == 'teacher')
+        {
+            $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+            $result = Report::where('teacher_id', $teacher->id)->get();
+            $reports = [];
+            foreach ($result as $i => $r)
+            {
+                $reports[$i] = $r;
+                $reports[$i]->data = json_decode($r->data);
+            }
+
+            return view('admin.views.reports.list', ['reports' => $reports]);
+        }
     }
-    else if (Auth::user()->role == 'teacher'){
-        $teacher = Teacher::where('user_id',Auth::user()->id)->first();
-              $result = Report::where('teacher_id',$teacher->id)->get();
-              $reports = [];
-              foreach ($result as $i => $r)
-              {
-                  $reports[$i] = $r;
-                  $reports[$i]->data = json_decode($r->data);
-              }
-      
-              return view('admin.views.reports.list', ['reports' => $reports]);
-          }
-}
     /**
      * Show the form for creating a new resource.
      *
@@ -77,7 +79,7 @@ class ReportController extends Controller
                 $data[$r] = $request->get($r);
             }
         }
-        $user_teacher_data = Teacher::Where('user_id' , Auth::user()->id)->first();
+        $user_teacher_data = Teacher::Where('user_id', Auth::user()->id)->first();
 
         $new_report = Report::create([
             'name' => $request->input('report_name'),
@@ -93,7 +95,7 @@ class ReportController extends Controller
         if ($new_report->id)
         {
             $sms = new SMS;
-            $message = "New report has been received from ".$request->input('report_barangay');
+            $message = "New report has been received from " . $request->input('report_barangay');
             $sms->sendSMS($message);
             $return_data = ['success' => true, 'message' => 'Report saved successfully!'];
         }
@@ -144,8 +146,8 @@ class ReportController extends Controller
             return $pdf->download($report->name . '-report.pdf');
         }
         $sms = new SMS;
-            $message = "Your report has been received";
-            $sms->sendSMS1($message);
+        $message = "Your report has been received";
+        $sms->sendSMS1($message);
         return view($blade . 'view');
     }
 
@@ -165,7 +167,7 @@ class ReportController extends Controller
             break;
         case 'large-scale':
             return view('admin.views.reports.large-scale.form', ['report' => $report]);
-            return view('admin.summary'); 
+            return view('admin.summary');
         case 'armed-conflict':
             return view('admin.views.reports.armed-conflict.form', ['report' => $report]);
         }
@@ -188,10 +190,10 @@ class ReportController extends Controller
                 $data[$r] = $request->get($r);
             }
         }
-        $user_teacher_data = Teacher::Where('user_id' , Auth::user()->id)->first();
+        $user_teacher_data = Teacher::Where('user_id', Auth::user()->id)->first();
         $report->fill([
-            'name' =>$request->input('report_name'),
-            'teacher_id' => $user_teacher_data->id, 
+            'name' => $request->input('report_name'),
+            'teacher_id' => $user_teacher_data->id,
             'status' => 'pending',
             'data' => json_encode($data),
         ]);
@@ -227,5 +229,5 @@ class ReportController extends Controller
         }
         return response()->json(['success' => true, 'message' => 'request submitted successfully']);
     }
-    
+
 }

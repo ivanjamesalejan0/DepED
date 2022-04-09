@@ -28,10 +28,20 @@ loadJS(requiredJS);
         @foreach($reports as $r)
 
         <tr data-id="{{$r->id}}">
-          <td>{{$r->data->{'report-type'} ?? ''}}</td>
+          <td><span class="text-uppercase">{{$r->data->{'report-type'} ?? ''}}</span></td>
           <td><a href="admin/reports/{{$r->id}}?type={{$r->data->{'report-type'} ?? ''}}" class="view-link">{{$r->name}}</a></td>
-          <td>{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</td>
-          <td>{{$r->status}}</td>
+          <td><span class="text-uppercase">{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</span></td>
+          <td>
+            @if($r->status=='pending')
+            <span class="text-uppercase small badge badge-warning">{{$r->status}}</span>
+            @elseif($r->status=='denied')
+            <span class="text-uppercase small badge badge-warning">{{$r->status}}</span>
+            @elseif($r->status=='approved')
+            <span class="text-uppercase small badge badge-success">{{$r->status}}</span>
+            @else
+            <span class="text-uppercase small badge">{{$r->status}}</span>
+            @endif
+          </td>
           <td>{{ date('Y-m-d H:i:s', strtotime($r->created_at)) }}</td>
         </tr>
         @endforeach

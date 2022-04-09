@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="icon" type="image/png" href="{{  asset('theme/img/249751651_599905524484536_8579641574835364272_n.png') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link class="default-style" id="main-style" rel="stylesheet" href="{{ asset('css/bs-demo.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/font-awesome/css/font-awesome.min.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/themify-icons/css/themify-icons.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/vendor/pace/themes/orange/pace-theme-minimal.css') }}">
