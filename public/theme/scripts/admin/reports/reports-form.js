@@ -69,14 +69,46 @@ $('#app-form').on('submit', function (e) {
     function () {});
 });
 
-
-$("select[name='natural-hazards']").change(function (e) {
-  $('.natural-hazard-specific').addClass('hidden');
-  switch (e.target.value) {
-    case 'Others, please specify':
-      $('#natural-hazard-specific-others').removeClass('hidden');
-      break;
+$("select[name='natural-hazards']").on('change', function(e){
+  $('#natural-hazard-specific-others').addClass('hidden');
+  if(e.target.value == 'Others, please specify'){
+    $('#natural-hazard-specific-others').removeClass('hidden');
   }
-})
+});
+
+$("select[name='human-indicated-hazards']").on('change', function(e){
+  $('#human-indicated-hazards-others').addClass('hidden');
+  if(e.target.value == 'Others, please specify'){
+    $('#human-indicated-hazards-others').removeClass('hidden');
+  }
+});
 
 
+$("select[name='school-at-evalation-center']").on('change', function(e){
+  $('#school-is-used-as-evaluation').addClass('hidden');
+  if(e.target.value == 'Yes'){
+    $('#school-is-used-as-evaluation').removeClass('hidden');
+  }
+});
+
+$("select[name='suspention']").on('change', function(e){
+  $('#class-was-suspended').addClass('hidden');
+  if(e.target.value == 'Yes'){
+    $('#class-was-suspended').removeClass('hidden');
+  }
+});
+
+$(".school-level-numbers").on('change', function(e){
+  
+  let parent = $(this).parent('.school-level-group')[0];
+  let numbers = $(parent).children('.school-level-numbers');
+  let total = $(parent).children('.school-level-total')[0];
+  let t = 0;
+  numbers.each(e => {
+    let val = parseInt($(numbers)[e].value);
+    if( !isNaN(val) ){
+      t += val;
+    }
+  });
+  $(total).html(t.toString());
+});

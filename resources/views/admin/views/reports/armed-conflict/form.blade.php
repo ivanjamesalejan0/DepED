@@ -7,7 +7,6 @@ var requiredJS = [
 ];
 loadJS(requiredJS);
 var returnURL = 'admin/reports/create';
-
 </script>
 
 <div class="panel">
@@ -27,6 +26,8 @@ var returnURL = 'admin/reports/create';
 
         <!-- BASIC TABS -->
         <h4>Armed-conflict Disaster Report</h4>
+        <hr />
+
         <form method="POST" id="app-form" action="views/admin/reports/{{$report->id ?? ''}}" autocomplete="off" enctype="multipart/form-data">
 
           {{ csrf_field() }}
@@ -59,8 +60,12 @@ var returnURL = 'admin/reports/create';
             <div class="tab-pane fade in active" id="page1">
               <h5>Page 1</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page1', ['report' => $report ?? []])
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page1', ['report' => $report ?? []])
+              </div>
+
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page2" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
@@ -69,120 +74,137 @@ var returnURL = 'admin/reports/create';
             <div class="tab-pane fade" id="page2">
               <h5>Page 2</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page2', ['report' => $report ?? []])
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page2', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page1" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page3" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page3" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page3">
               <h5>Page 3</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page3', ['report' => $report ?? []])
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page3', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page2" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page4" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page4" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page4">
               <h5>Page 4</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page4', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page4', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page3" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page5" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page5" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page5">
               <h5>Page 5</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page5', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page5', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page4" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page6" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page6" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page6">
               <h5>Page 6</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page6', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page6', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page5" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page7" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page7" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page7">
               <h5>Page 7</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page7', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page7', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page6" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page8" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page8" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page8">
               <h5>Page 8</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page8', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page8', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page7" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-6">
-                    <a href="#page9" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
-                  </div>
+                <div class="col-xs-6 text-right">
+                  <a href="#page9" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade" id="page9">
               <h5>Page 9</h5>
               <hr />
-              @include('admin.views.reports.armed-conflict.tabs.page9', ['report' => $report ?? []])
+
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.armed-conflict.tabs.page9', ['report' => $report ?? []])
+              </div>
+
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page8" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>

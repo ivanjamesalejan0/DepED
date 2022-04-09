@@ -24,6 +24,7 @@ loadJS(requiredJS);
 
         <!-- BASIC TABS -->
         <h4>Small Scale Disaster Report</h4>
+        <hr />
         <ul class="nav nav-tabs hidden" role="tablist">
           <li class="active"><a href="#page1" role="tab" data-toggle="tab">Page 1</a></li>
           <li><a href="#page2" role="tab" data-toggle="tab">Page 2</a></li>
@@ -46,10 +47,12 @@ loadJS(requiredJS);
             <div class="tab-pane fade in active" id="page1">
               <h5>Page 1</h5>
               <hr />
-              @include('admin.views.reports.small-scale.tabs.page1', ['report' => $report ?? []])
-
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.small-scale.tabs.page1', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page2" role="tab" data-toggle="tab" class="btn btn-primary">Next <span class="ti-arrow-circle-right"></span></a>
                 </div>
@@ -58,9 +61,12 @@ loadJS(requiredJS);
             <div class="tab-pane fade" id="page2">
               <h5>Page 2</h5>
               <hr />
-              @include('admin.views.reports.small-scale.tabs.page2', ['report' => $report ?? []])
+              <div class="bs-callout bs-callout-info">
+                @include('admin.views.reports.small-scale.tabs.page2', ['report' => $report ?? []])
+              </div>
 
               <div class="form-group row">
+                <hr />
                 <div class="col-xs-6">
                   <a href="#page1" role="tab" data-toggle="tab" class="btn btn-default"><span class="ti-arrow-circle-left"></span> Previous</a>
                 </div>
@@ -69,7 +75,6 @@ loadJS(requiredJS);
                   <button type="submit" id="submit-form" class="btn btn-success">Submit <span class="fa fa-check"></span></button>
                 </div>
               </div>
-
             </div>
           </div>
         </form>
