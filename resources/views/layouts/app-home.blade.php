@@ -20,6 +20,7 @@
 
   <!-- plugin css -->
   <link href="{{ asset('theme/vendor/sweetalert2/sweetalert2.css') }}" rel="stylesheet" class="default-style">
+  <link href="{{ asset('theme/vendor/toastr/toastr.min.css') }}" rel="stylesheet" class="default-style">
   <link href="{{ asset('datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" class="default-style">
   <link href="{{ asset('datatables/ColReorder-1.4.1/css/colReorder.bootstrap.min.css') }}" rel="stylesheet" class="default-style">
   <link href="{{ asset('datatables/Select-1.2.3/css/select.bootstrap.min.css') }}" rel="stylesheet" class="default-style">
@@ -96,6 +97,7 @@
   <script class="default-js" src="{{ asset('theme/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
   <script class="default-js" src="{{ asset('theme/vendor/pace/pace.min.js') }}"></script>
   <script class="default-js" src="{{ asset('theme/vendor/sweetalert2/sweetalert2.js') }}"></script>
+  <script class="default-js" src="{{ asset('theme/vendor/toastr/toastr.min.js') }}"></script>
 
   <script class="default-js" src="{{ asset('theme/scripts/main-menu.custom.js') }}"></script>
   <script class="default-js" src="{{ asset('theme/scripts/app.custom.js') }}"></script>

@@ -29,7 +29,7 @@ class ReportController extends Controller
                 $reports[$i]->data = json_decode($r->data);
             }
 
-            return view('admin.views.reports.list', ['reports' => $reports]);
+            return view('admin.views.reports.list', ['reports' => $reports, 'user' => Auth::user()]);
         }
         else if (Auth::user()->role == 'teacher')
         {
@@ -42,7 +42,7 @@ class ReportController extends Controller
                 $reports[$i]->data = json_decode($r->data);
             }
 
-            return view('admin.views.reports.list', ['reports' => $reports]);
+            return view('admin.views.reports.list', ['reports' => $reports, 'user' => Auth::user()]);
         }
     }
     /**
@@ -183,20 +183,30 @@ class ReportController extends Controller
     public function update(Request $request, Report $report)
     {
         $data = [];
-        foreach (collect($request->all())->keys()->toArray() as $r)
+
+        if ($request->input('update') == 'status' && Auth::user()->role == 'admin')
         {
-            if ($r != '_token' && $r != '_method')
-            {
-                $data[$r] = $request->get($r);
-            }
+            $report->fill([
+                'status' => $request->input('status'),
+            ]);
         }
-        $user_teacher_data = Teacher::Where('user_id', Auth::user()->id)->first();
-        $report->fill([
-            'name' => $request->input('report_name'),
-            'teacher_id' => $user_teacher_data->id,
-            'status' => 'pending',
-            'data' => json_encode($data),
-        ]);
+        else
+        {
+            foreach (collect($request->all())->keys()->toArray() as $r)
+            {
+                if ($r != '_token' && $r != '_method')
+                {
+                    $data[$r] = $request->get($r);
+                }
+            }
+            $user_teacher_data = Teacher::Where('user_id', Auth::user()->id)->first();
+            $report->fill([
+                'name' => $request->input('report_name'),
+                'teacher_id' => $user_teacher_data->id,
+                'status' => 'pending',
+                'data' => json_encode($data),
+            ]);
+        }
         $report->save();
         return ['success' => true, 'message' => 'Successfully saved'];
     }

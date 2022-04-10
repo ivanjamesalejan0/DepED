@@ -5,6 +5,7 @@ var requiredJS = [
   "{{ asset('theme/scripts/admin/reports/reports-list-table.js') }}"
 ];
 loadJS(requiredJS);
+var isAdmin = <?php echo $user->role == 'admin' ? 'true' : 'false'; ?>
 </script>
 <!-- FEATURED DATATABLE -->
 <div class="panel">
@@ -24,23 +25,18 @@ loadJS(requiredJS);
         </tr>
       </thead>
       <tbody>
-
         @foreach($reports as $r)
-
-        <tr data-id="{{$r->id}}">
+        <tr class="report-list" data-id="{{$r->id}}">
           <td><span class="text-uppercase">{{$r->data->{'report-type'} ?? ''}}</span></td>
-          <td><a href="admin/reports/{{$r->id}}?type={{$r->data->{'report-type'} ?? ''}}" class="view-link">{{$r->name}}</a></td>
+          <td><a href="admin/reports/{{$r->id}}?type={{$r->data->{'report-type'} ?? ''}}" class="view-link"><span class="text-uppercase">{{$r->name}}</span></a></td>
           <td><span class="text-uppercase">{{$r->teacher->lastname}}, {{$r->teacher->firstname}} {{$r->teacher->middlename}}</span></td>
           <td>
-            @if($r->status=='pending')
-            <span class="text-uppercase small badge badge-warning">{{$r->status}}</span>
-            @elseif($r->status=='denied')
-            <span class="text-uppercase small badge badge-warning">{{$r->status}}</span>
-            @elseif($r->status=='approved')
-            <span class="text-uppercase small badge badge-success">{{$r->status}}</span>
-            @else
-            <span class="text-uppercase small badge">{{$r->status}}</span>
-            @endif
+            <select name="form-status" id="select-status" class="form-control">
+              <option value="pending" {{$r->status=='pending'?'selected': ''}}>Pending</option>
+              <option value="denied" {{$r->status=='denied'?'selected': ''}}>Denied</option>
+              <option value="approved" {{$r->status=='approved'?'selected': ''}}>Approved</option>
+              <option value="archived" {{$r->status=='archived'?'selected': ''}}>Archived</option>
+            </select>
           </td>
           <td>{{ date('Y-m-d H:i:s', strtotime($r->created_at)) }}</td>
         </tr>

@@ -98,7 +98,6 @@ $.dataTable = $('#reports-list-datatable').dataTable({
         extend: 'colvis',
         postfixButtons: ['colvisRestore']
       },
-     
       {
         text: 'Edit',
         className: 'edit-row fa fa-edit',
@@ -182,3 +181,34 @@ $.dataTable = $('#reports-list-datatable').dataTable({
     ]
   }
 });
+
+$('body').on('change','#select-status', function(e){
+  var statusValue = $(this).val();
+  var parentElementId = $(this).parents('.report-list').first().attr('data-id');
+  var url = `views/admin/reports/${parentElementId}`;
+  
+  $.ajax({
+    url: url,
+    type: 'POST',
+    data: {
+      _method: 'PUT',
+      id: parentElementId,
+      status: statusValue,
+      update: 'status'
+    },
+    dataType: 'json',
+    beforeSend: function (xhr) {
+      if ($(this).find('.has-error .error').length > 0) {
+        xhr.abort();
+      }
+      xhr.setRequestHeader("X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr('content'));
+    }
+  }).success(function (data) {
+    toastr.success('Updated successfully!');
+  }).error(function (data) {
+    toastr.error('Oops! Something went wrong.');
+  })
+
+ 
+
+})
