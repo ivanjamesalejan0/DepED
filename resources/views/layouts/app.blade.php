@@ -29,24 +29,21 @@
 
 
   <div id="app">
- 
-  <div class="col-md-3 col-md-offset-2">
+
+    <div class="col-md-3 col-md-offset-2">
       <center> <img src="{{ asset('theme/img/Deped.png') }}" alt="DEPED" class="img-responsive logo" style="position:relative; top:170px; width:300px;height:auto; float: right;
     margin-right: 150px"></a></center>
 
     </div>
   </div>
   <div class="col-md-3 col-md-offset-2">
-    <center> <img src="{{ asset('theme/img/249751651_599905524484536_8579641574835364272_n.png') }}" alt="DEPED"
-        class="img-responsive logo"
-        style="position:relative; top: 170px; width: 150px; height: auto; float: right; margin-right: 550px;"></a>
+    <center> <img src="{{ asset('theme/img/249751651_599905524484536_8579641574835364272_n.png') }}" alt="DEPED" class="img-responsive logo" style="position:relative; top: 170px; width: 150px; height: auto; float: right; margin-right: 550px;"></a>
     </center>
 
   </div>
   </div>
   <div class="col-md-3 col-md-offset-2">
-    <center> <img src="{{ asset('theme/img/download (1).png') }}" alt="DEPED" class="img-responsive logo"
-        style="position:relative; top: 180px; width: 200px; height: auto; float: right; margin-right: 140px;"></a>
+    <center> <img src="{{ asset('theme/img/download (1).png') }}" alt="DEPED" class="img-responsive logo" style="position:relative; top: 180px; width: 200px; height: auto; float: right; margin-right: 140px;"></a>
     </center>
 
   </div>
@@ -56,8 +53,7 @@
     <div class="navbar-header">
 
       <!-- Collapsed Hamburger -->
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse"
-        aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
         <span class="sr-only">Toggle Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -74,7 +70,7 @@
 
   @yield('content')
   </section>
-  
+
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>

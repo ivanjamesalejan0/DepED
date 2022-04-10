@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,18 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        $users=Auth::user();
-       
+
+        $users = Auth::user();
+
         if (Auth::user())
         {
             return view('layouts.app-home', ['user' => $users]);
-            
+
         }
         else
         {
             return view('auth.login');
         }
-        
+
     }
 }
