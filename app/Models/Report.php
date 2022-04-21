@@ -12,7 +12,7 @@ class Report extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'teacher_id', 'status', 'data','province','municipality','barangay',
+        'name', 'teacher_id', 'status', 'data', 'province', 'municipality', 'barangay',
     ];
 
     public function teacher()

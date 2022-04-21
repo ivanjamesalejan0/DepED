@@ -17,9 +17,10 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
-    use AuthenticatesUsers {
+    use AuthenticatesUsers
+    {
         login as protected loginDefault;
     }
 
@@ -53,16 +54,21 @@ class LoginController extends Controller
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
+        if ($this->hasTooManyLoginAttempts($request))
+        {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
         }
 
-        if ($this->attemptLogin($request)) {
-            if($this->guard()->user()->active){
+        if ($this->attemptLogin($request))
+        {
+            if ($this->guard()->user()->active)
+            {
                 return $this->sendLoginResponse($request);
-            }else{
+            }
+            else
+            {
                 $this->guard()->logout();
                 $request->session()->invalidate();
                 return $this->sendFailedLoginResponse($request);

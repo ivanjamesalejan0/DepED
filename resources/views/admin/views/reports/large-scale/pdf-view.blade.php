@@ -1,34 +1,37 @@
 <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/pdf-style.css') }}" rel="stylesheet">
 <style>
-  p{
-    float: left;
-    margin-left:250px;
-  }
-img{
+p {
   float: left;
-    margin-left:150px;
+  margin-left: 250px;
 }
-  </style>
+
+img {
+  float: left;
+  margin-left: 150px;
+}
+</style>
 <div class="container1">
   <div class="row">
-  <br>
-  <div class="col-xs-10 col-sm-9">
-  <img src="{{ asset('theme/img/248350555_1061292314707821_6149040979343760114_n.png') }}" alt="DEPED" class="img-responsive logo" style= "position:relative; top:5px; width:100px;height:auto;">
-  <div class="panel-heading">
-       <center> <p>Republic of the Philippines </p> <br></center>
-          <p>Department of Education </p><br>
-          <p>REGION X- NORTHERN MINDANAO</p><br>
-          <p>DIVISION OF MALAYBALAY CITY </p>
+    <br>
+    <div class="col-xs-10 col-sm-9">
+      <img src="img/users/avatars/{{ $report->teacher->image ?? 'default.png'  }}" alt="DEPED" class="img-responsive logo" style="position:relative; top:5px; width:100px;height:auto;">
+      <div class="panel-heading">
+        <center>
+          <p>Republic of the Philippines </p> <br>
+        </center>
+        <p>Department of Education </p><br>
+        <p>REGION X- NORTHERN MINDANAO</p><br>
+        <p>DIVISION OF MALAYBALAY CITY </p>
       </div>
       <br>
-       <br>
-        </div>
-</div>
+      <br>
+    </div>
+  </div>
 </div>
 <div class="container">
   <div class="row">
-  <div class="col-xs-10 col-sm-9">
+    <div class="col-xs-10 col-sm-9">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">{{$report->name}}</h4>
@@ -36,7 +39,7 @@ img{
         <div class="panel-body">
           <div class="profile__header">
             <h4>{{$report->teacher->lastname}}, {{$report->teacher->firstname}} {{$report->teacher->middlename}}<small>Teacher</small></h4>
-           
+
           </div>
         </div>
       </div>

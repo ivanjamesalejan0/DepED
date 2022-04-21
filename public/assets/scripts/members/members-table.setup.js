@@ -3,17 +3,20 @@ $(function () {
   $('#featured-datatable').dataTable({
     sDom: "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
   });
+  $('#unfeatured-datatable').dataTable({
+    sDom: "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
+  });
 });
 
 function deleteMember(id) {
   swal({
-    title: 'Archive Member',
-    text: 'Are you sure you want to archive this member?',
+    title: 'Delete Member',
+    text: 'Are you sure you want to delete this member? This cannot be undone.',
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#F9354C',
     cancelButtonColor: '#41B314',
-    confirmButtonText: 'Archive',
+    confirmButtonText: 'Delete',
     allowOutsideClick: false
   }).then(function () {
     $.ajax({

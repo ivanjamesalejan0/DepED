@@ -15,12 +15,15 @@ loadCSS(requiredCSS);
         </div>
         <div class="panel-body">
           <div class="profile__avatar">
-            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
+            <img src="img/users/avatars/{{ $report->teacher->image ?? 'default.png'  }}" alt="...">
           </div>
           <div class="profile__header">
-            <h4>{{$report->teacher->lastname}}, {{$report->teacher->firstname}} {{$report->teacher->middlename}}<small><br>Teacher</small></h4>
+            <h4>{{$report->teacher->lastname}}, {{$report->teacher->firstname}} {{$report->teacher->middlename}} </h4>
+            <p class="text-muted">
+              <span class="badge badge-{{$report->teacher->role == 'principal'?'primary':'secondary'}}">{{$report->teacher->role}}</span>
+            </p>
             <p>
-              <a href="#">Bukidnon State University</a>
+              <a href="#">{{ $report->teacher->school_data->school_name }}</a>
             </p>
           </div>
         </div>
@@ -70,7 +73,7 @@ loadCSS(requiredCSS);
         </div>
       </div>
 
-    
+
 
     </div>
     <div class="col-xs-12 col-sm-3">
@@ -84,7 +87,7 @@ loadCSS(requiredCSS);
 
       <hr class="profile__contact-hr">
 
-    
+
 
     </div>
   </div>

@@ -29,6 +29,10 @@
   <link href="{{ asset('datatables/Buttons-1.4.2/css/buttons.bootstrap.min.css') }}" rel="stylesheet" class="default-style">
   <link href="{{ asset('datatables/FixedHeader-3.1.3/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet" class="default-style">
 
+  <link href="{{ asset('theme/vendor/dropify/css/dropify.min.css') }}" rel="stylesheet" class="default-style">
+
+
+
   <!-- FOR DEMO PURPOSES ONLY. You should/may remove this in your project -->
   <link class="default-style" rel="stylesheet" href="{{ asset('theme/css/demo.css') }}">
   <link class="default-style" rel="stylesheet" href="{{ asset('css/custom-style.css') }}">
@@ -122,6 +126,13 @@
   <script class="default-js" src="{{ asset('datatables/sorting/any-number.js') }}"></script>
   <script class="default-js" src="{{ asset('datatables/sorting/numeric-comma.js') }}"></script>
   <script class="default-js" src="{{ asset('datatables/dataTables.colResize.js') }}"></script>
+
+  <script class="default-js" src="{{ asset('js/jquery.form-validator.min.js') }}"></script>
+
+  <script class="default-js" src="{{ asset('theme/vendor/dropify/js/dropify.min.js') }}"></script>
+  <script class="default-js" src="{{ asset('theme/vendor/chart-js/Chart.min.js') }}"></script>
+
+
 
 
 </body>
