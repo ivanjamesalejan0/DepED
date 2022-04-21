@@ -36,6 +36,7 @@ var returnURL = 'admin/users';
     <table id="featured-datatable" class="table table-striped table-hover">
       <thead>
         <tr>
+          <th>&nbsp;</th>
           <th>Name</th>
           <th>Username</th>
           <th>Email</th>
@@ -50,6 +51,7 @@ var returnURL = 'admin/users';
         @foreach($teachers as $teacher)
 
         <tr>
+          <td><img style="height: 50px; width: 50px" class="img-circle" src="img/users/avatars/{{ $teacher->image ?? 'default.png'}}"></td>
           <td>{{strtoupper($teacher->lastname)}}, {{strtoupper($teacher->firstname)}} {{strtoupper($teacher->middlename)}}</td>
           <td>{{strtoupper($teacher->name)}}</td>
           <td>{{strtoupper($teacher->email)}}</td>
@@ -74,6 +76,7 @@ var returnURL = 'admin/users';
     <table id="admin-featured-datatable" class="table table-striped table-hover">
       <thead>
         <tr>
+          <th>&nbsp;</th>
           <th>Name</th>
           <th>Username</th>
           <th>Email</th>
@@ -84,6 +87,7 @@ var returnURL = 'admin/users';
       <tbody>
         @foreach($admins as $admin)
         <tr>
+          <td><img style="height: 50px; width: 50px" class="img-circle" src="img/users/avatars/{{ $admin->image ?? 'default.png'}}"></td>
           <td>{{strtoupper($admin->lastname)}}, {{strtoupper($admin->firstname)}} {{strtoupper($admin->middlename)}}</td>
           <td>{{strtoupper($admin->name)}}</td>
           <td>{{strtoupper($admin->email)}}</td>

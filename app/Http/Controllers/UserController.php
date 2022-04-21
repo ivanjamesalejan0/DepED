@@ -9,7 +9,9 @@ use App\User;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -61,6 +63,7 @@ class UserController extends Controller
             'gender' => 'required|string|in:male,female',
             'school' => 'required|digits_between:2,8',
             'role' => 'required|string|in:principal,teacher,admin',
+            'image' => $request->input('image') != '' ? 'image|mimes:jpeg,png,jpg|max:2000' : '',
 
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -70,6 +73,24 @@ class UserController extends Controller
         if ($validator->fails())
         {
             return ['success' => false, 'title' => 'Failed to add user!', 'message' => 'Oops! Something went wrong', 'errors' => $validator->messages()];
+        }
+
+        $fileName = null;
+
+        if ($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(400, 400, function ($constraint)
+            {
+                $constraint->aspectRatio();
+            });
+
+            $img->stream(); // <-- Key point
+
+            Storage::disk('public')->put('img/users/avatars/' . $fileName, $img, 'public');
         }
 
         $user = User::create([
@@ -86,6 +107,7 @@ class UserController extends Controller
                 'firstname' => $request->input('firstname'),
                 'middlename' => $request->input('middlename'),
                 'lastname' => $request->input('lastname'),
+                'image' => $fileName,
             ]);
         }
         else if ($request->input('role') == 'teacher' || $request->input('role') == 'principal')
@@ -99,6 +121,7 @@ class UserController extends Controller
                 'gender' => $request->input('gender'),
                 'school' => $request->input('school'),
                 'role' => $request->input('role'),
+                'image' => $fileName,
             ]);
         }
         return ['success' => true, 'title' => 'User successfully added!', 'message' => 'successfully saved'];
@@ -187,6 +210,7 @@ class UserController extends Controller
                 'gender' => 'required|string|in:male,female',
                 'school' => 'required|digits_between:2,8',
                 'role' => 'required|string|in:principal,teacher,admin',
+                'image' => $request->input('image') != '' ? 'image|mimes:jpeg,png,jpg|max:2000' : '',
 
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -210,35 +234,56 @@ class UserController extends Controller
             }
             User::find($request->input('id'))->update($user_new_info);
 
+            $fileName = null;
+
+            if ($request->hasFile('image'))
+            {
+                $image = $request->file('image');
+                $fileName = time() . '.' . $image->getClientOriginalExtension();
+
+                $img = Image::make($image->getRealPath());
+                $img->resize(400, 400, function ($constraint)
+                {
+                    $constraint->aspectRatio();
+                });
+
+                $img->stream(); // <-- Key point
+
+                Storage::disk('public')->put('img/users/avatars/' . $fileName, $img, 'public');
+            }
+
+            $new_data = [
+                'firstname' => $request->input('firstname'),
+                'middlename' => $request->input('middlename'),
+                'lastname' => $request->input('lastname'),
+                'status' => $request->input('status'),
+                'gender' => $request->input('gender'),
+                'school' => $request->input('school'),
+                'role' => $request->input('role'),
+            ];
+            if ($fileName)
+            {
+                $new_data['image'] = $fileName;
+            }
+
             if ($request->input('role') == 'admin')
             {
-                Admin::find($request->info_id)->update([
-                    'firstname' => $request->input('firstname'),
-                    'middlename' => $request->input('middlename'),
-                    'lastname' => $request->input('lastname'),
-                ]);
+                Admin::find($request->info_id)->update($new_data);
             }
             else if ($request->input('role') == 'teacher' || $request->input('role') == 'principal')
             {
-
-                Teacher::find($request->info_id)->update([
-                    'firstname' => $request->input('firstname'),
-                    'middlename' => $request->input('middlename'),
-                    'lastname' => $request->input('lastname'),
-                    'status' => $request->input('status'),
-                    'gender' => $request->input('gender'),
-                    'school' => $request->input('school'),
-                    'role' => $request->input('role'),
-                ]);
+                Teacher::find($request->info_id)->update($new_data);
             }
             $data = [
                 'success' => true,
                 'title' => 'Success!',
                 'message' => 'Successfully updated information.',
+                'data' => [],
             ];
         }
-        return json_encode($data);
+        return $data;
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -262,5 +307,27 @@ class UserController extends Controller
         ];
         return json_encode($data);
 
+    }
+
+    /**
+     * Upload image
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadImage(Request $request)
+    {
+        $this->validate($request, [
+            'webcam' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $image = $request->file('webcam');
+        $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/images');
+        $image->move($destinationPath, $input['imagename']);
+
+        return json_encode([
+            'success' => 'Image Upload successful',
+            'image' => $input['imagename'],
+        ]);
     }
 }

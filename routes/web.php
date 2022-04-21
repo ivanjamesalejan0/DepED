@@ -33,6 +33,7 @@ Route::group([
             Route::delete('reports/multiple', 'ReportController@destroyMultiple');
             Route::resource('reports', 'ReportController');
             Route::resource('users', 'UserController');
+            Route::post('users/upload-image', 'UserController@uploadImage');
             Route::get('pdfview', array('as' => 'pdfview', 'uses' => 'BestInterviewQuestionController@pdfview'));
             Route::get('/ajax_upload', 'AjaxUploadController@index');
             Route::post('/ajax_upload/action', 'AjaxUploadController@action')->name('ajaxupload.action');

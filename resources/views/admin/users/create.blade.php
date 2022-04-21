@@ -11,6 +11,7 @@ loadCSS(requiredCSS);
 
 requiredJS = [
   'assets/scripts/members/member-form.setup.js',
+  //'theme/scripts/admin/users/users-form.js'
 ];
 
 loadJS(requiredJS);
@@ -20,7 +21,6 @@ var returnURL = 'admin/home';
 <div class="row">
   <form id="app-form" class="form-horizontal" role="form" method="POST" action="views/admin/users{{isset($info)?'/'.$user->id:''}}" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="">
-    <input type="hidden" name="image" value="">
 
     @if(isset($info))
     <input type="hidden" name="_method" value="patch">
@@ -30,7 +30,7 @@ var returnURL = 'admin/home';
 
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Personal Information</h3>
@@ -116,7 +116,7 @@ var returnURL = 'admin/home';
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">Login Information</h3>
@@ -157,13 +157,13 @@ var returnURL = 'admin/home';
                 <div class="col-md-4 col-lg-4">
                   <div class="form-group form-control-container">
                     <label class="control-label">Password</label>
-                    <input type="password" name="password" required class="form-control" value="">
+                    <input type="password" name="password" class="form-control" value="">
                   </div>
                 </div>
                 <div class="col-md-4 col-lg-4">
                   <div class="form-group form-control-container">
                     <label class="control-label">Confirm Password</label>
-                    <input type="password" name="password_confirmation" required class="form-control" value="">
+                    <input type="password" name="password_confirmation" class="form-control" value="">
                   </div>
                 </div>
               </div>
@@ -171,28 +171,26 @@ var returnURL = 'admin/home';
             </div>
           </div>
         </div>
+
+
+        <div class="col-md-3">
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Picture</h3>
+            </div>
+            <div class="panel-body">
+              <p>Recommended size is 400x400.<br /> Limit file size, try to upload file larger than 2 MB</p>
+              <input name="image" id="dropify-event" type="file" class="dropify" data-max-file-size="2M" data-default-file="{{ isset($info) && $info->image ? asset('img/users/avatars/'.$info->image) : ''  }}">
+
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
     <div class="col-md-12 text-right">
       <button type="submit" id="submit-form" class="btn btn-primary"> {{ isset($info) ? 'Update User': 'Add User' }}</button>
-    </div>
-
-    <div class="modal fade" id="camera-modal">
-      <div class="modal-dialog text-center">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Picture</h4>
-          </div>
-          <div class="modal-body">
-            <div id="webcam" class="center-block"></div>
-            <input type=button class="btn btn-primary" value="Take Snapshot" onClick="take_snapshot()">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
     </div>
 
 
