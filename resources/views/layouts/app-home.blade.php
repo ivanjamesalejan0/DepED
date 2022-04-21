@@ -123,6 +123,9 @@
   <script class="default-js" src="{{ asset('datatables/sorting/numeric-comma.js') }}"></script>
   <script class="default-js" src="{{ asset('datatables/dataTables.colResize.js') }}"></script>
 
+  <script class="default-js" src="{{ asset('js/jquery.form-validator.min.js') }}"></script>
+  <script class="default-js" src="{{ asset('js/webcam.min.js') }}"></script>
+
 
 </body>
 

@@ -19,7 +19,6 @@ Route::group([
     Route::get('home', 'HomeController@index');
     Route::get('summary', 'SummaryController@index');
 
-
     Route::group([
         'prefix' => 'views',
     ], function ($router)
@@ -34,9 +33,9 @@ Route::group([
             Route::delete('reports/multiple', 'ReportController@destroyMultiple');
             Route::resource('reports', 'ReportController');
             Route::resource('users', 'UserController');
-            Route::get('pdfview',array('as'=>'pdfview','uses'=>'BestInterviewQuestionController@pdfview'));
+            Route::get('pdfview', array('as' => 'pdfview', 'uses' => 'BestInterviewQuestionController@pdfview'));
             Route::get('/ajax_upload', 'AjaxUploadController@index');
-Route::post('/ajax_upload/action', 'AjaxUploadController@action')->name('ajaxupload.action');
+            Route::post('/ajax_upload/action', 'AjaxUploadController@action')->name('ajaxupload.action');
         });
     });
 });
