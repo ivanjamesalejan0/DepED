@@ -20,7 +20,7 @@
       <li class="dropdown">
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('img/users/avatars/default.png') }}" alt="Avatar">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/users/avatars/{{ Auth::user()->role == 'admin'? Auth::user()->admin->image??'default.png' : Auth::user()->teacher->image??'default.png' }}" alt="Avatar">
           <span>{{ Auth::user()->name }}</span></a>
         <ul class="dropdown-menu logged-user-menu">
           <li><a href="#" onClick="loadView('admin/users/{{Auth::user()->id}}/edit')"><i class="ti-user"></i> <span>My Profile</span></a></li>

@@ -15,8 +15,21 @@ function initMap() {
 
   const setBg = () => {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    document.body.style.backgroundColor = "#" + randomColor;
-    color.innerHTML = "#" + randomColor;
+    const colors = [
+      '#d35400',
+      '#f1c40f',
+      '#3498db',
+      '#DAF7A6',
+      '#FFC300',
+      '#FF5733',
+      '#922b21',
+      '#d35400',
+      '#f1c40f',
+      '#3498db',
+      '#DAF7A6',
+      '#FFC300',
+    ]
+    return  colors[Math.floor(Math.random() * 11)];
   }
 
   function showArrays(event) {
@@ -58,13 +71,14 @@ function initMap() {
           })
         }
         // Construct the polygon.
+        randColor = setBg();
         const geoMap = new google.maps.Polygon({
           paths: parsed_coordinates,
-          strokeColor: "#FF0000",//setBg,
+          strokeColor: randColor,
           strokeOpacity: 0.8,
-          strokeWeight: 3,
-          fillColor: "#FF0000",//setBg,
-          fillOpacity: 0.35,
+          strokeWeight: 1,
+          fillColor: randColor,
+          fillOpacity: 0.8,
           name: city_name
         });
 

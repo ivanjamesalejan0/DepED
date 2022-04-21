@@ -29,6 +29,8 @@ Route::group([
         {
             Route::get('summary', 'SummaryController@index');
             Route::get('statistics', 'ChartController@index');
+            Route::get('statistics/geo-detail-report', 'ChartController@geoDetailReport');
+            Route::get('statistics/school-detail-report', 'ChartController@schoolDetailReport');
             Route::get('home', 'AdminHomeController@home');
             Route::delete('reports/multiple', 'ReportController@destroyMultiple');
             Route::resource('reports', 'ReportController');

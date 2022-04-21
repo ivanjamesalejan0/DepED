@@ -130,6 +130,9 @@
   <script class="default-js" src="{{ asset('js/jquery.form-validator.min.js') }}"></script>
 
   <script class="default-js" src="{{ asset('theme/vendor/dropify/js/dropify.min.js') }}"></script>
+  <script class="default-js" src="{{ asset('theme/vendor/chart-js/Chart.min.js') }}"></script>
+
+
 
 
 </body>

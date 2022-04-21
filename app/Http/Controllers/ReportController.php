@@ -123,6 +123,7 @@ class ReportController extends Controller
      */
     public function show(Report $report, Request $request)
     {
+
         $report->data = json_decode($report->data);
         view()->share('report', $report);
 
