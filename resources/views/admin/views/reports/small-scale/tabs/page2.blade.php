@@ -24,7 +24,8 @@
 
 <div class="panel-body">
   <h5>5. When did the incident happen? </h5>
-  <input type="input" name="incident" class="form-control" value="{{$report->data->{'incident'} ?? ''}}">
+  <input type="date" name="incident" class="form-control" value="{{$report->data->{'incident'} ?? ''}}">
+  <input type="time" name="incident1" class="form-control" value="{{$report->data->{'incident'} ?? ''}}">
   <p class="small text-info">(Give the date and time)</p>
 </div>
 
@@ -39,4 +40,5 @@
   <input type="input" name=" person-involved" class="form-control" value="{{$report->data->{'person-involved'} ?? ''}}">
   <p class="small text-info">(List the names of people or groups involved and/or
     affected. Please attach sheet if needed.)</p>
+    @include('admin.views.reports.armed-conflict.tabs.ajax_upload')
 </div>

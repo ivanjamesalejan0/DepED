@@ -7,8 +7,7 @@
     <li class="menu-group">Reports</li>
     <li><a href="admin/reports"><span class="title">Manage Reports</span></a></li>
     <li><a href="admin/statistics"><span class="title">Statistic</span></a></li>
-    <li><a href="admin/summary"><span class="title">Summary Report</span></a></li>
-
+  
     <li class="menu-group">Users</li>
     <li><a href="admin/users"><span class="title">Manage Users</span></a></li>
     <li><a href="admin/users/create"><span class="title">Add User</span></a></li>

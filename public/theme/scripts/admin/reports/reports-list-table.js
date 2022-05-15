@@ -1,20 +1,23 @@
+
 // datatable with paging options and live search
-$.dataTable = $('#reports-list-datatable').dataTable({
+
+
+$.dataTable = $('#reports-list-datatable').DataTable({
   'scrollY': false,
   'scrollCollapse': true,
   'paging': true,
-  'autoWidth': false,
+  'autoWidth': false, 
   'select': 'multi',
   'scrollX': true,
   'lengthMenu': [
     [15, 30, 50, -1],
     [15, 30, 50, "All"]
   ],
-  
+
   'dom': '<<"row" <"col-sm-3 text-left dt-search"><"col-sm-9 text-right" B>><t><"row" <"col-sm-6 text-left" l><"col-sm-6 text-right" pi>>>',
   'serverSide': false,
   'processing': false,
-  'colReorder': true,
+  'colReorder': false,
   'responsive': false,
   'fixedHeader': false,
   'buttons': {
@@ -173,16 +176,28 @@ $.dataTable = $('#reports-list-datatable').dataTable({
                     }).then(function () {}).catch(swal.noop);
                   });
                 }
+                
               },
+              
               function () {});
           }).catch(swal.noop);
-        }
+        } 
       }
     ]
+  },
+  initComplete: function(){
+    $('.dt-search').append('<label class="control-label input-sm">Search</label><input type="search" class="form-control input-sm" placeholder="" aria-controls="data-table">');
   }
 });
 
+setTimeout(function(){
+  $($.dataTable.table().container()).on('keypress', '.dt-search input', function (e) {
+    $.dataTable.search(this.value).draw();
+  });
+},500)
+
 $('body').on('change','#select-status', function(e){
+  
   var statusValue = $(this).val();
   var parentElementId = $(this).parents('.report-list').first().attr('data-id');
   var url = `views/admin/reports/${parentElementId}`;

@@ -25,4 +25,5 @@
     on type of equipment damaged shall be consolidated by respective divisions. Divisions shall endorse the detailed
     assessment to respective DepEd offices for proper intervention)
   </p>
+  @include('admin.views.reports.armed-conflict.tabs.ajax_upload')
 </div>

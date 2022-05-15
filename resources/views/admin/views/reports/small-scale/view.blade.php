@@ -72,12 +72,13 @@ loadCSS(requiredCSS);
           </table>
         </div>
       </div>
-
+      <img style="height: 300px; width: auto" class="img-square" src="img/reports/{{ $report->data->{'report-type'} }}/{{  $report->data->image ?? 'default.png'}}">
+     
 
 
     </div>
     <div class="col-xs-12 col-sm-3">
-
+     
       <!-- Contact user -->
       <p>
         <a href="views/admin/reports/{{$report->id}}?type={{$report->data->{'report-type'} ?? ''}}&download=pdf" target="_blank" class="profile__contact-btn btn btn-lg btn-block btn-primary">

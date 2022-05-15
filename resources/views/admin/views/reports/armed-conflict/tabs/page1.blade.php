@@ -1,12 +1,11 @@
 <div class="panel-body">
   <h5>SCHOOL NAME</h5>
-  <input type="text" name="School_name" class="form-control" placeholder="SCHOOL NAME" required value="{{$report->data->{'School_name'} ?? ''}}">
+  {{ $report->teacher->school_data->school_name }}
 </div>
 
 <div class="panel-body">
   <h5>SCHOOL ID</h5>
-  <input type="number" name="School_id" class="form-control" placeholder="SCHOOL ID" required value="{{$report->data->{'School_id'} ?? ''}}">
-</div>
+  {{ $report->teacher->school_data->school_id }}</div>
 
 <div class="panel-body">
   <h5>DIVISION</h5>

@@ -100,7 +100,7 @@ $("select[name='suspention']").on('change', function(e){
 
 $(".school-level-numbers").on('change', function(e){
   
-  let parent = $(this).parent('.school-level-group')[0];
+  let parent = $(this).parent('.school-furniture-group')[0];
   let numbers = $(parent).children('.school-level-numbers');
   let total = $(parent).children('.school-level-total')[0];
   let t = 0;

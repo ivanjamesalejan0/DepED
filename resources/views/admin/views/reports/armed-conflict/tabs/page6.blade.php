@@ -21,7 +21,7 @@
   <label>Arm Chairs</label><br>
   <input type="number" name=" Arm Chairs" class="form-control" required value="{{$report->data->{'Arm_Chairs'} ?? ''}}">
 
-  <label>Desks</label><br>
+  <label>Computers</label><br>
   <input type="number" name=" Desks" class="form-control" required value="{{$report->data->{'Desks'} ?? ''}}">
 
   <label>Teacher's Tables</label><br>

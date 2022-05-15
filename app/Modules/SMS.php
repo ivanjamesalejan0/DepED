@@ -10,9 +10,8 @@ class SMS {
  
     public function sendSMS($message)
     {
-        $basic  = new Basic("662c007c", "Qwi9CjOv8BzuTJZM");
-        $client = new Client($basic);  
-        
+        $basic  = new \Vonage\Client\Credentials\Basic("662c007c", "Qwi9CjOv8BzuTJZM");
+        $client = new \Vonage\Client($basic);
         $response = $client->sms()->send(
             new VonageSMS("639679538451", BRAND_NAME, $message."\n")
         );

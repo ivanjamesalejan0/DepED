@@ -7,55 +7,55 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <br />
   <style type="text/css">
-  <!--
-  p {
-    margin: 0;
-    padding: 0;
-  }
+    <!--
+    p {
+      margin: 0;
+      padding: 0;
+    }
 
-  .ft10 {
-    font-size: 23px;
-    font-family: Times;
-    color: #05508c;
-  }
+    .ft10 {
+      font-size: 23px;
+      font-family: Times;
+      color: #05508c;
+    }
 
-  .ft11 {
-    font-size: 15px;
-    font-family: Times;
-    color: #05508c;
-  }
+    .ft11 {
+      font-size: 15px;
+      font-family: Times;
+      color: #05508c;
+    }
 
-  .ft12 {
-    font-size: 20px;
-    font-family: Times;
-    color: #ffffff;
-  }
+    .ft12 {
+      font-size: 20px;
+      font-family: Times;
+      color: #ffffff;
+    }
 
-  .ft13 {
-    font-size: 23px;
-    font-family: Times;
-    color: #ffffff;
-  }
+    .ft13 {
+      font-size: 23px;
+      font-family: Times;
+      color: #ffffff;
+    }
 
-  .ft14 {
-    font-size: 15px;
-    font-family: Times;
-    color: #ffffff;
-  }
+    .ft14 {
+      font-size: 15px;
+      font-family: Times;
+      color: #ffffff;
+    }
 
-  .ft15 {
-    font-size: 20px;
-    font-family: Times;
-    color: #05508c;
-  }
+    .ft15 {
+      font-size: 20px;
+      font-family: Times;
+      color: #05508c;
+    }
 
-  .ft16 {
-    font-size: 23px;
-    line-height: 37px;
-    font-family: Times;
-    color: #ffffff;
-  }
-  -->
+    .ft16 {
+      font-size: 23px;
+      line-height: 37px;
+      font-family: Times;
+      color: #ffffff;
+    }
+    -->
   </style>
 </head>
 <a href=&download=pdf" target="_blank" class="profile__contact-btn btn btn-lg btn-block btn-primary">
@@ -153,12 +153,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <br />
   <style type="text/css">
-  <!--
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  -->
+    <!--
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    -->
   </style>
 </head>
 
@@ -178,42 +178,42 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <br />
   <style type="text/css">
-  <!--
-  p {
-    margin: 0;
-    padding: 0;
-  }
+    <!--
+    p {
+      margin: 0;
+      padding: 0;
+    }
 
-  .ft30 {
-    font-size: 23px;
-    font-family: Times;
-    color: #05508c;
-  }
+    .ft30 {
+      font-size: 23px;
+      font-family: Times;
+      color: #05508c;
+    }
 
-  .ft31 {
-    font-size: 15px;
-    font-family: Times;
-    color: #05508c;
-  }
+    .ft31 {
+      font-size: 15px;
+      font-family: Times;
+      color: #05508c;
+    }
 
-  .ft32 {
-    font-size: 20px;
-    font-family: Times;
-    color: #ffffff;
-  }
+    .ft32 {
+      font-size: 20px;
+      font-family: Times;
+      color: #ffffff;
+    }
 
-  .ft33 {
-    font-size: 15px;
-    font-family: Times;
-    color: #000000;
-  }
+    .ft33 {
+      font-size: 15px;
+      font-family: Times;
+      color: #000000;
+    }
 
-  .ft34 {
-    font-size: 29px;
-    font-family: Times;
-    color: #ffffff;
-  }
-  -->
+    .ft34 {
+      font-size: 29px;
+      font-family: Times;
+      color: #ffffff;
+    }
+    -->
   </style>
 </head>
 

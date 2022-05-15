@@ -14,3 +14,4 @@ class SummaryController extends Controller
         return view('Reports.summary');
     }
 }
+

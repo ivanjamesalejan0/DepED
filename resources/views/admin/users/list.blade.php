@@ -32,7 +32,7 @@ var returnURL = 'admin/users';
     <p class="text-right">
       <a href="admin/users/create" class="btn btn-primary view-link">Add User <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </p>
-    <h4>Teachers & Principals List</h4>
+    <h4>Teachers</h4>
     <table id="featured-datatable" class="table table-striped table-hover">
       <thead>
         <tr>

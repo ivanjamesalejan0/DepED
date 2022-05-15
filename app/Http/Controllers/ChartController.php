@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon; 
+use App\Models\Report;
 class chartController extends Controller
 {
 
     public function randomGenerateReport()
     {
-        $orig_ss = DB::select("select * from reports where json_extract(data, '$.report-type') = 'small-scale'")[0] ?? null;
-        //$orig_ss = DB::select("select * from reports where json_extract(data, '$.report-type') = 'large-scale'")[0] ?? null;
+        //$orig_ss = DB::select("select * from reports where json_extract(data, '$.report-type') = 'small-scale'")[0] ?? null;
+        $orig_ss = DB::select("select * from reports where json_extract(data, '$.report-type') = 'large-scale'")[0] ?? null;
         //$orig_ss = DB::select("select * from reports where json_extract(data, '$.report-type') = 'armed-conflict'")[0] ?? null;
 
         $teachers = DB::select("select * from teachers");
@@ -92,11 +93,14 @@ class chartController extends Controller
      */
     public function index(Request $request)
     {
+
+        $start_date =  $request->input('start_date') ?? date('Y-m-d', strtotime('now -29 days'));
+        $end_date =  $request->input('end_date') ?? date('Y-m-d', strtotime('now'));
         //$this->randomGenerateReport();
 
-        $count_ss = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'small-scale' && YEAR(created_at) = YEAR(CURDATE()) group by MONTH");
-        $count_ls = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'large-scale' && YEAR(created_at) = YEAR(CURDATE()) group by MONTH");
-        $count_ac = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'armed-conflict' && YEAR(created_at) = YEAR(CURDATE()) group by MONTH");
+        $count_ss = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'small-scale' and created_at >= '$start_date' and created_at <= '$end_date' group by MONTH");
+        $count_ls = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'large-scale' and created_at >= '$start_date' and created_at <= '$end_date' group by MONTH");
+        $count_ac = DB::select("select MONTHNAME(created_at) MONTH, count(*) as COUNT from reports where json_extract(data, '$.report-type') = 'armed-conflict' and created_at >= '$start_date' and created_at <= '$end_date' group by MONTH");
 
         //parse small scale
         $tmp = [];
@@ -137,11 +141,12 @@ class chartController extends Controller
         }
         $count_ac = array_values($tmp);
 
-        $geo = DB::table('reports')->selectRaw("province, municipality, barangay, count(*) as count")->whereRaw("YEAR(created_at) = YEAR(CURDATE())")->groupBy(['province', 'municipality', 'barangay'])->get();
+        $geo = DB::table('reports')->selectRaw("province, municipality, barangay, count(*) as count")->whereRaw("reports.created_at >= '$start_date'")->whereRaw("reports.created_at <= '$end_date'")->groupBy(['province', 'municipality', 'barangay'])->get();
 
-        $school = DB::table('reports')->join('teachers', 'teachers.id', 'reports.teacher_id')->join('tbl_schools', 'teachers.school', 'tbl_schools.school_id')->selectRaw("tbl_schools.school_id as school_id, tbl_schools.school_name as school_name, count(*) as count")->whereRaw("YEAR(reports.created_at) = YEAR(CURDATE())")->groupBy(['school_id'])->get();
-
-        return view('admin.statistics.statistics', [
+        $school = DB::table('reports')->join('teachers', 'teachers.id', 'reports.teacher_id')->join('tbl_schools', 'teachers.school', 'tbl_schools.school_id')->selectRaw("tbl_schools.school_id as school_id, tbl_schools.school_name as school_name, count(*) as count")->whereRaw("reports.created_at >= '$start_date'")->whereRaw("reports.created_at <= '$end_date'")->groupBy(['school_id'])->get();
+     
+        
+       return view('admin.statistics.statistics', [
             'count' => [
                 'ss' => $count_ss,
                 'ls' => $count_ls,
@@ -149,7 +154,11 @@ class chartController extends Controller
             ],
             'geo' => $geo,
             'schools' => $school,
-        ]);
+            'filters' => [
+                'start_date' => $request->input('start_date')??null,
+                'end_date' =>  $request->input('end_date')??null,
+            ]
+            ]);
     }
 
     /**
@@ -195,5 +204,22 @@ class chartController extends Controller
             'count' => $reports,
         ]);
     }
+     public function reportlist(Request $request)
+    {
+        $report->data = json_decode($report->data);
+        view()->share('report', $report);
 
+        switch (strtolower($request->get('type') ?? 'small-scale'))
+        {
+        case 'small-scale':
+            $blade = 'admin.views.reports.small-scale.';
+            break;
+        case 'large-scale':
+            $blade = 'admin.views.reports.large-scale.';
+            break;
+        case 'armed-conflict':
+            $blade = 'admin.views.reports.armed-conflict.';
+            break;
+        }
+    }
 }

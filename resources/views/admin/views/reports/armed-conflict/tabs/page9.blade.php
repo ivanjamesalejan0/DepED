@@ -21,4 +21,5 @@
   attention, including next steps. Use separate sheet if needed.</label><br>
 <input type="input" name="OTHER CONCERNS" class="form-control" required value="{{$report->data->{'OTHER_CONCERNS'} ?? ''}}" ><br>
 <br>
+@include('admin.views.reports.armed-conflict.tabs.ajax_upload')
 <hr>

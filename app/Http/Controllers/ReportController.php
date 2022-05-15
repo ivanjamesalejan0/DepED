@@ -8,6 +8,8 @@ use App\Modules\SMS;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage; 
 
 class ReportController extends Controller
 {
@@ -71,38 +73,63 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data = [];
         foreach (collect($request->all())->keys()->toArray() as $r)
         {
             if ($r != '_token')
             {
                 $data[$r] = $request->get($r);
+                
             }
         }
+        $data['image'] = '';
         $user_teacher_data = Teacher::Where('user_id', Auth::user()->id)->first();
 
-        $new_report = Report::create([
+        $report_data = [
             'name' => $request->input('report_name'),
             'teacher_id' => $user_teacher_data->id,
             'status' => 'pending',
-            'data' => json_encode($data),
+            'data' => $data,
             'province' => $request->input('report_province'),
             'municipality' => $request->input('report_municipality'),
             'barangay' => $request->input('report_barangay'),
-            'image' => $request->input('report_image'),
-        ]);
+        ];
+        
+        $report_type = $request->input('report-type');
 
+        if($request->hasFile('image')){
+            $fileName = null;
+            $image = $request->file('image');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+
+            $img = Image::make($image->getRealPath());
+
+            $img->stream(); // <-- Key point
+
+            Storage::disk('public')->put("img/reports/$report_type/" . $fileName, $img, 'public');
+
+            if ($fileName)
+            {
+                $report_data['data']['image'] = $fileName;
+            }
+        }
+        
+        $report_data['data']=json_encode($report_data['data']);
+        
+        $new_report = Report::create($report_data);
+
+        
         if ($new_report->id)
         {
-            $sms = new SMS;
-            $message = "New report has been received from " . $request->input('report_barangay');
-            $sms->sendSMS($message);
             $return_data = ['success' => true, 'message' => 'Report saved successfully!'];
+            
         }
         else
         {
             $return_data = ['success' => false, 'message' => 'Oops! Something went wrong.'];
         }
+       
 
         switch (strtolower($request->get('type') ?? 'small-scale'))
         {
@@ -139,17 +166,16 @@ class ReportController extends Controller
             $blade = 'admin.views.reports.armed-conflict.';
             break;
         }
-
+        
         if ($request->has('download'))
         {
             $pdf = App::make('dompdf.wrapper');
             $pdf->loadView($blade . 'pdf-view', $report);
             return $pdf->download($report->name . '-report.pdf');
         }
-        $sms = new SMS;
-        $message = "Your report has been received";
-        $sms->sendSMS1($message);
-        return view($blade . 'view');
+       else{
+        return view($blade . 'view', ['report' => $report]);
+       }
     }
 
     /**
@@ -168,7 +194,7 @@ class ReportController extends Controller
             break;
         case 'large-scale':
             return view('admin.views.reports.large-scale.form', ['report' => $report]);
-            return view('admin.summary');
+            
         case 'armed-conflict':
             return view('admin.views.reports.armed-conflict.form', ['report' => $report]);
         }
@@ -240,5 +266,4 @@ class ReportController extends Controller
         }
         return response()->json(['success' => true, 'message' => 'request submitted successfully']);
     }
-
 }

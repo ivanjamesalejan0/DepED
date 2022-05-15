@@ -10,6 +10,17 @@
 </div>
 
 <div class="panel-body">
+  <h4><b>Missing DepEd Personnel</b></h4>
+  <input type="number" name=" Missing" class="form-control"  required value="{{$report->data->{'Missing'} ?? ''}}"><br>
+  </div>
+
+  <div class="panel-body">
+  <h4><b>Displaced DepEd Personnel</b></h4>
+  <input type="number" name=" Displaced" class="form-control"  required value="{{$report->data->{'Displaced'} ?? ''}}"><br>
+  </div>
+
+
+<div class="panel-body">
   <h4><b>Affected Non-Teaching Personnel </b></h4>
   <input type="number" name=" Non-Teaching_male" class="form-control" placeholder="male" required value="{{$report->data->{'Non-Teaching_male'} ?? ''}}"><br>
   <input type="number" name=" Non-Teaching_female" class="form-control" placeholder="female" required value="{{$report->data->{'Non-Teaching_female'} ?? ''}}"><br>
